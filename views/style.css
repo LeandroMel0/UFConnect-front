@@ -1,0 +1,454 @@
+CSS da primeira tela
+.title-dark {
+  color: #0c1c34;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.btn {
+  display: block;
+  width: 90%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 8px 0;
+  transition: 0.3s ease;
+  display: block;       /* garante comportamento de bloco */
+  margin: 0 auto;        /* centraliza horizontalmente */
+}
+
+.btn.roxo {
+  background-color: #a633cc;
+  color: white;
+  border: none;
+}
+
+.btn.roxo:hover {
+  background-color: #8e2bb3;
+}
+
+.btn.transparente {
+  background-color: transparent;
+  color: #1cc6dd;
+  border: 2px solid #1cc6dd;
+}
+
+.btn.transparente:hover {
+  background-color: #e6faff;
+}
+
+.already {
+  font-size: 14px;
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+
+/* CSS da tela de login */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0a0b10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+/* Logo no topo */
+.logo {
+  color: #a633cc;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Card central */
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-card {
+  background-color: #ddd;
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.login-card h2 {
+  color: #a633cc;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* Labels e inputs */
+form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  width: 90%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 2px solid #1cc6dd;
+  outline: none;
+  font-size: 14px;
+  display: block;       /* garante comportamento de bloco */
+  margin: 0 auto;        /* centraliza horizontalmente */
+}
+
+/* Wrapper para o campo de senha com ícone */
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Botão */
+button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #a633cc;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #8e2bb3;
+}
+
+/*CSS da tela com erro*/
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.success-message{
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* CSS da dashboard */
+
+.dashboard-container {
+  background-color: #ddd;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  width: 320px;
+  margin: auto;
+  margin-top: 15vh;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.dashboard-container h2 {
+  color: #a633cc;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #a633cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #8e2bb3;
+}
+
+/* CSS da tela de cadastro */
+
+body.body {
+  background-color: #0e0f13;
+  font-family: sans-serif;
+  height: 100vh;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.register-wrapper {
+  text-align: center;
+  color: #b938c2;
+}
+
+.register-card {
+  background-color: #d9d9d9;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.register-card h2 {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 92%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border: 2px solid #00c2d3;
+  outline: none;
+  position: center;
+  display: block;       /* garante comportamento de bloco */
+  margin: 0 auto;        /* centraliza horizontalmente */
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 30px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  background-color: #b938c2;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #9d2cae;
+}
+
+/* CSS da tela de registro com erro */
+/* é o mesmo da tela correta mas com algumas coisas diferentes */
+
+/* CSS da tela do feed */
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.tela-feed {
+  font-family: Arial, sans-serif;
+  background-color: #0c0c1e;
+  color: #fff;
+  padding-top: 70px; /* espaço para o header fixo */
+}
+
+/* HEADER FIXO */
+#ufconnect-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #002f5f;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+#ufconnect-header .logo {
+  font-size: 24px;
+  width: 10%;
+  height: 10%;
+  color: #d000ff;
+}
+
+#ufconnect-header .barra-pesquisa {
+  flex: 1;
+  margin: 0 225px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+}
+
+#ufconnect-header .menu-navegacao a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* LAYOUT PRINCIPAL */
+#ufconnect-container {
+  display: flex;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* SIDEBAR ESQUERDA */
+#ufconnect-sidebar-esquerda {
+  width: 22%;
+  background-color: #121223;
+  padding: 15px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.perfil-usuario .foto-perfil {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.info-usuario {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.menu-lateral li {
+  list-style: none;
+  margin: 12px 0;
+}
+
+.btn-publicar,
+.btn-configuracoes {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #a000f0;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* CONTEÚDO CENTRAL */
+#ufconnect-conteudo-principal {
+  flex: 1;
+  background-color: #1a1a2e;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.caixa-postagem .campo-texto {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  resize: none;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.btn-foto {
+  padding: 8px 15px;
+  border: none;
+  background-color: #00c2d3;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.postagem {
+  background-color: #292942;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.cabecalho-postagem strong {
+  font-size: 18px;
+}
+
+.texto-postagem {
+  margin-top: 10px;
+}
+
+.imagem-postagem {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.acoes-postagem {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+}
+
+/* SIDEBAR DIREITA */
+#ufconnect-sidebar-direita {
+  width: 22%;
+  background-color: #121223;
+  padding: 15px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.lista-contatos li {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.btn-adicionar {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #a000f0;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}

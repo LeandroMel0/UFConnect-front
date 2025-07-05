@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UFConnect</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0c0c1e;
+      color: #fff;
+    }
+    header {
+      background-color: #002f5f;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    }
+    .logo {
+      font-size: 24px;
+      color: #d000ff;
+    }
+    .barra-pesquisa {
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      border: none;
+      width: 100%;
+    }
+    .sidebar {
+      background-color: #121223;
+      border-radius: 10px;
+      padding: 1rem;
+      color: #fff;
+    }
+    .btn-custom {
+      background-color: #a000f0;
+      color: white;
+      border-radius: 20px;
+    }
+    .btn-custom:hover {
+      background-color: #8e2bb3;
+    }
+   .btn-red {
+    background-color: #ff3b3b; /* Vermelho vibrante */
+    color: white;
+    border-radius: 20px;
+   }
+
+  .btn-red:hover {
+    background-color: #b11414; /* Um tom mais escuro no hover */
+  }
+
+
+    .postagem {
+      background-color: #292942;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .campo-texto {
+      border: none;
+      border-radius: 10px;
+      resize: none;
+      width: 100%;
+      padding: 0.75rem;
+    }
+    .imagem-postagem {
+      border-radius: 8px;
+      margin-top: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="fixed-top w-100 py-3 px-4 d-flex justify-content-between align-items-center">
+    <div class="logo " style="margin-left: 3%;">LOGO</div>
+    <div class="input-group" style="width: 700px; margin-left: 1%;">
+      <input type="text" class="form-control form-control-sm barra-pesquisa" placeholder="Pesquisar...">
+      <button class="btn btn-custom" type="button">🔍</button>
+    </div>
+    <nav class="d-flex gap-3">
+      <a href="#" class="text-white text-decoration-none">🏠 Início</a>
+      <a href="#" class="text-white text-decoration-none">💼 Oportunidades</a>
+      <a href="#" class="text-white text-decoration-none">🔔 Notificações</a>
+      <a href="#" class="text-white text-decoration-none">👤 Perfil</a>
+    </nav>
+  </header>
+
+  <!-- CONTAINER -->
+  <div style="padding-top: 120px;">
+    <div class="row justify-content-center">
+
+      <!-- Sidebar esquerda -->
+      <aside class="col-lg-3 sidebar me-3" style=" width: 250px; margin-left: 0;">
+        <div class="text-center mb-3">
+          <img src="pictures\perfil.jpg" alt="Foto de perfil" class="rounded-circle" width="30" height="30">
+          <div class="mt-2">
+            <strong>Professor Evilásio</strong>
+            <p class="mb-1">Professor de Engenharia de Computação</p>
+            <p>📍 Sobral, Ceará</p>
+          </div>
+        </div>
+        <ul class="list-unstyled">
+          <li>🔔 Notificações</li>
+          <li>📁 Itens Salvos</li>
+          <li>🎯 Oportunidades</li>
+          <li>🏛️ Serviços UFC</li>
+        </ul>
+        <div class="d-grid gap-2 mt-3">
+          <button class="btn btn-custom">⚙️ Configurações</button>
+          <button class="btn btn-red">Sair</button>
+        </div>
+      </aside>
+
+      <!-- Conteúdo principal -->
+  <main class="col-lg-6 d-flex flex-column">
+    <!-- Caixa de publicação -->
+    <div class="mb-3">
+      <textarea class="campo-texto form-control" placeholder="📢 Publique algo!" rows="2"></textarea>
+      <button class="btn btn-info mt-2 rounded-pill">📷 Adicionar imagem</button>
+      <button class="btn btn-custom mt-2 rounded-pill"> Publicar</button>
+    </div>
+
+    <!-- Caixa de postagens com rolagem -->
+    <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 500px;">
+      
+      <!-- Postagem 1 -->
+      <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
+        <div class="mb-2">
+          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+          <strong>Professor Evilásio</strong>
+          <p class="mb-1">Professor de Engenharia de Computação</p>
+        </div>
+        <p>
+          Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
+          fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
+        </p>
+        <img src="pictures\image.png" class="img-fluid rounded mb-2" alt="">
+        <div class="d-flex justify-content-around text-white-50">
+          <span>❤️ 50</span>
+          <span>💬 11 comentários</span>
+          <span>🔁 Compartilhar</span>
+        </div>
+      </div>
+
+      <!-- Postagem 2 -->
+      <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
+        <div class="mb-2">
+          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+          <strong>Prof. Elmano</strong>
+          <p class="mb-1">Engenharia Elétrica</p>
+        </div>
+        <p>
+          Finalizamos o projeto de robótica com sucesso! Obrigado, turma!
+        </p>
+        <img src="null" class="img-fluid rounded mb-2" alt="">
+        <div class="d-flex justify-content-around text-white-50">
+          <span>❤️ 34</span>
+          <span>💬 6 comentários</span>
+          <span>🔁 Compartilhar</span>
+        </div>
+      </div>
+
+         <!-- Postagem 3 -->
+      <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
+        <div class="mb-2">
+          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+          <strong>Prof. Elmano</strong>
+          <p class="mb-1">Engenharia Elétrica</p>
+        </div>
+        <p>
+          Finalizamos o projeto de robótica com sucesso! Obrigado, turma!
+        </p>
+        <img src="null" class="img-fluid rounded mb-2" alt="">
+        <div class="d-flex justify-content-around text-white-50">
+          <span>❤️ 34</span>
+          <span>💬 6 comentários</span>
+          <span>🔁 Compartilhar</span>
+        </div>
+      </div>
+
+       <!-- Postagem 4 -->
+      <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
+        <div class="mb-2">
+          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+          <strong>Professor Evilásio</strong>
+          <p class="mb-1">Professor de Engenharia de Computação</p>
+        </div>
+        <p>
+          Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
+          fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
+        </p>
+        <img src="pictures\image.png" class="img-fluid rounded mb-2" alt="">
+        <div class="d-flex justify-content-around text-white-50">
+          <span>❤️ 50</span>
+          <span>💬 11 comentários</span>
+          <span>🔁 Compartilhar</span>
+        </div>
+      </div>
+
+      <div class="spinner-border" role="status" style="
+  top: 50%;
+  left: 50%;
+
+  z-index: 1050; /* Fica acima do conteúdo */
+">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+      <!-- Adicione mais postagens conforme desejar -->
+
+    </div>
+  </main>
+      <!-- Sidebar direita -->
+      <aside class="col-lg-3 sidebar ms-3">
+        <h5>👥 Minha rede</h5>
+        <ul class="list-unstyled">
+          <li>👩‍🏫 Professora Ermana Lopes</li>
+          <li>👨‍🏫 Prof. Elmano</li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
