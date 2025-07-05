@@ -17,6 +17,11 @@
       transform: translateY(-50%);
       cursor: pointer;
     }
+    .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(28, 198, 221, 0.25);
+    border-color: #1cc6dd;
+    }
+
   </style>
 </head>
 <body class="bg-dark text-light d-flex justify-content-center align-items-center vh-100">
@@ -31,12 +36,12 @@
 
         <div class="mb-3">
           <label for="email" class="form-label">Digite seu e-mail</label>
-          <input type="text" name="username" id="email" class="form-control rounded-pill" placeholder="E-mail" required />
+          <input type="text" name="username" id="email" class="form-control" placeholder="E-mail" required />
         </div>
 
         <div class="mb-3 position-relative">
           <label for="password" class="form-label">Digite sua senha</label>
-          <input type="password" name="password" id="password" class="form-control rounded-pill pe-5" placeholder="Senha" required />
+          <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required />
           <span class="eye-toggle">👁️</span>
         </div>
 
