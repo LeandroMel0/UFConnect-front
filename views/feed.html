@@ -116,11 +116,19 @@
       <!-- Conteúdo principal -->
   <main class="col-lg-6 d-flex flex-column">
     <!-- Caixa de publicação -->
-    <div class="mb-3">
+   <div class="d-flex align-items-start mb-3">
+    <!-- Imagem de usuário -->
+    <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+
+    <!-- Área de publicação -->
+    <div class="flex-grow-1">
       <textarea class="campo-texto form-control" placeholder="📢 Publique algo!" rows="2"></textarea>
-      <button class="btn btn-info mt-2 rounded-pill">📷 Adicionar imagem</button>
-      <button class="btn btn-custom mt-2 rounded-pill"> Publicar</button>
+      <div class="d-flex gap-2 mt-2">
+        <button class="btn btn-info rounded-pill">📷 Adicionar imagem</button>
+        <button class="btn btn-custom rounded-pill"> Publicar</button>
+      </div>
     </div>
+  </div>
 
     <!-- Caixa de postagens com rolagem -->
     <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 500px;">
@@ -199,12 +207,7 @@
         </div>
       </div>
 
-      <div class="spinner-border" role="status" style="
-  top: 50%;
-  left: 50%;
-
-  z-index: 1050; /* Fica acima do conteúdo */
-">
+      <div class="spinner-border" role="status" style="position:sticky; top: 50%;left: 50%;width: 3rem; height: 3rem; z-index: 1050;">
         <span class="visually-hidden">Loading...</span>
       </div>
 
@@ -216,10 +219,10 @@
       <aside class="col-lg-3 sidebar ms-3">
         <h5>👥 Minha rede</h5>
         <ul class="list-unstyled">
-          <li>👩‍🏫 Professora Ermana Lopes</li>
-          <li>👨‍🏫 Prof. Elmano</li>
+          <li><a href="perfil-ermana.html" class="text-white text-decoration-none">👩‍🏫 Professora Ermana Lopes</a></li>
+          <li><a href="perfil-elmano.html" class="text-white text-decoration-none">👨‍🏫 Prof. Elmano</a></li>
         </ul>
-      </aside>
+    </aside>
 
     </div>
   </div>
