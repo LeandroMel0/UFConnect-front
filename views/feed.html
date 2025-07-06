@@ -31,6 +31,7 @@
       padding: 1rem;
       color: #fff;
     }
+
     .btn-custom {
       background-color: #a000f0;
       color: white;
@@ -48,33 +49,88 @@
   .btn-red:hover {
     background-color: #b11414; /* Um tom mais escuro no hover */
   }
+  .postagem {
+    background-color: #292942;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  .campo-texto {
+    border: none;
+    border-radius: 10px;
+    resize: none;
+    width: 100%;
+    padding: 0.75rem;
+  }
+  .imagem-postagem {
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+  }
 
+ .accordion-button {
+    background-color: #1c1c2e;
+    color: #fff;
+    border-radius: 10px !important;
+    box-shadow: none;
+    transition: background-color 0.3s ease;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: #2a2a40;
+    color: #fff;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .accordion-body {
+    border-top: 1px solid #444;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  .accordion-button::after {
+    filter: brightness(0) invert(1); /* transforma a seta em branco */
+  }
 
-    .postagem {
-      background-color: #292942;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-top: 1rem;
-    }
-    .campo-texto {
-      border: none;
-      border-radius: 10px;
-      resize: none;
-      width: 100%;
-      padding: 0.75rem;
-    }
-    .imagem-postagem {
-      border-radius: 8px;
-      margin-top: 10px;
-      width: 100%;
-    }
+  .perfil-card {
+    width: 100%;
+    position: relative;
+  }
+  .posicao-foto-perfil {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .foto-perfil {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    background-color: #fff;
+  }
+
+  .sidebar-links a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .sidebar-links a:hover {
+    background-color: #a000f0;
+    color: #ffffff;
+  }
+
   </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="fixed-top w-100 py-3 px-4 d-flex justify-content-between align-items-center">
-    <img src="pictures/UFConnect.png" alt="logo" width="150" height="50" class="logo-img mb-4">
+      <img src="pictures/UFConnect.png" alt="logo" width="150" height="50" class="logo-img align-self-center">
       <div class="input-group" style="width: 700px; margin-left: 1%;">
       <input type="text" class="form-control form-control-sm barra-pesquisa" placeholder="Pesquisar...">
       <button class="btn btn-custom" type="button">🔍</button>
@@ -93,24 +149,44 @@
 
       <!-- Sidebar esquerda -->
       <aside class="col-lg-3 sidebar me-3" style=" width: 250px; margin-left: 0;">
-        <div class="text-center mb-3">
-          <img src="pictures\perfil.jpg" alt="Foto de perfil" class="rounded-circle" width="30" height="30">
-          <div class="mt-2">
-            <strong>Professor Evilásio</strong>
-            <p class="mb-1">Professor de Engenharia de Computação</p>
-            <p>📍 Sobral, Ceará</p>
-          </div>
+       <div class="perfil-card text-center bg-light text-dark rounded overflow-hidden shadow-sm">
+        <div class="banner-perfil" style="background-image: url('pictures/banner.jpg'); height: 80px; background-size: cover; background-position: center;"></div>
+        
+        <div class="posicao-foto-perfil">
+          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="foto-perfil rounded-circle border border-3 border-white">
         </div>
-        <ul class="list-unstyled">
-          <li>🔔 Notificações</li>
-          <li>📁 Itens Salvos</li>
-          <li>🎯 Oportunidades</li>
-          <li>🏛️ Serviços UFC</li>
+
+        <div class="pt-4 pb-3">
+          <h5 class="mb-0 fw-bold">Professor Evilásio</h5>
+          <p class="mb-1 text-muted small">Professor de Engenharia de Computação</p>
+          <p class="text-muted small mb-0">📍 Sobral, Ceará</p>
+        </div>
+      </div>
+
+          <ul class="list-unstyled sidebar-links">
+          <li class="mb-2"></li>          
+          <li><a href="#" class="text-white text-decoration-none">🔔 Notificações</a></li>
+          <li><a href="#" class="text-white text-decoration-none">📁 Itens Salvos</a></li>
+          <li><a href="#" class="text-white text-decoration-none">🎯 Oportunidades</a></li>
+          <li><a href="#" class="text-white text-decoration-none">🏛️ Serviços UFC</a></li>
         </ul>
         <div class="d-grid gap-2 mt-3">
-          <button class="btn btn-custom">⚙️ Configurações</button>
-          <button class="btn btn-red">Sair</button>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item bg-dark text-white border-0 rounded">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              ⚙️ Configurações
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body bg-dark rounded-bottom">
+              <a href="#" class="text-white text-decoration-none d-block mb-2">🔒 Alterar Senha</a>
+              <a href="#" class="text-white text-decoration-none d-block mb-2">👤 Editar Perfil</a>
+              <a href="#" class="text-white text-decoration-none d-block">🚪 Sair</a>
+            </div>
+          </div>
         </div>
+      </div>
       </aside>
 
       <!-- Conteúdo principal -->
@@ -124,14 +200,14 @@
     <div class="flex-grow-1">
       <textarea class="campo-texto form-control" placeholder="📢 Publique algo!" rows="2"></textarea>
       <div class="d-flex gap-2 mt-2">
-        <button class="btn btn-info rounded-pill">📷 Adicionar imagem</button>
+        <button class="btn btn-info rounded-pill">Adicionar imagem</button>
         <button class="btn btn-custom rounded-pill"> Publicar</button>
       </div>
     </div>
   </div>
 
     <!-- Caixa de postagens com rolagem -->
-    <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 500px;">
+    <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 650px;">
       
       <!-- Postagem 1 -->
       <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
