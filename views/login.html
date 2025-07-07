@@ -27,7 +27,7 @@
 <body class="bg-dark text-light d-flex justify-content-center align-items-center vh-100">
 
   <div class="text-center">
-    <h1 class="text-purple mb-4">LOGO</h1>
+    <img src="pictures/UFConnect.png" alt="logo" width="300" height="100" class="logo-img mb-4">
 
     <div class="card p-4 text-start" style="width: 320px;">
       <h2 class="text-center text-dark fw-bold mb-3">ENTRE NA SUA CONTA</h2>
@@ -57,4 +57,9 @@
     const toggle = document.querySelector(".eye-toggle");
     const passwordInput = document.getElementById("password");
 
-    toggle.ad
+    toggle.addEventListener("click", () => {
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+      toggle.textContent = type === "password" ? "👁️" : "👁️";
+    });
+  </script>
