@@ -127,20 +127,33 @@
   </style>
 </head>
 <body>
-
   <!-- HEADER -->
   <header class="fixed-top w-100 py-3 px-4 d-flex justify-content-between align-items-center">
-      <img src="pictures/UFConnect.png" alt="logo" width="150" height="50" class="logo-img align-self-center">
-      <div class="input-group" style="width: 700px; margin-left: 1%;">
+    <img src="pictures/UFConnect.png" alt="logo" width="150" height="50" class="logo-img align-self-center">
+    <div class="input-group" style="width: 700px; margin-left: 1%;">
       <input type="text" class="form-control form-control-sm barra-pesquisa" placeholder="Pesquisar...">
-      <button class="btn btn-custom" type="button">🔍</button>
+      <button class="btn btn-custom" type="button">
+        <img src="icons/buscar.png" alt="Buscar" width="20" height="20">
+      </button>
     </div>
-    <nav class="d-flex gap-3">
-      <a href="#" class="text-white text-decoration-none">🏠 Início</a>
-      <a href="#" class="text-white text-decoration-none">💼 Oportunidades</a>
-      <a href="#" class="text-white text-decoration-none">🔔 Notificações</a>
-      <a href="#" class="text-white text-decoration-none">👤 Perfil</a>
-    </nav>
+      <nav class="d-flex gap-3 align-items-center">
+        <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+          <img src="icons/inicio.png" alt="Início" width="20" height="20">
+          Início
+        </a>
+        <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+          <img src="icons/oportunidadesB.png" alt="Oportunidades" width="20" height="20">
+          Oportunidades
+        </a>
+        <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+          <img src="icons/notificacoesB.png" alt="Notificações" width="20" height="20">
+          Notificações
+        </a>
+        <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+          <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+          Perfil
+        </a>
+      </nav>
   </header>
 
   <!-- CONTAINER -->
@@ -165,18 +178,47 @@
 
           <ul class="list-unstyled sidebar-links">
           <li class="mb-2"></li>          
-          <li><a href="#" class="text-white text-decoration-none">🔔 Notificações</a></li>
-          <li><a href="#" class="text-white text-decoration-none">📁 Itens Salvos</a></li>
-          <li><a href="#" class="text-white text-decoration-none">🎯 Oportunidades</a></li>
-          <li><a href="#" class="text-white text-decoration-none">🏛️ Serviços UFC</a></li>
+          <li>
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="icons/notificacoes.png" alt="Notificações" width="20" class="me-2">
+              Notificações
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="icons/salvos.png" alt="Itens Salvos" width="20" class="me-2">
+              Itens Salvos
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="icons/oportunidades.png" alt="Oportunidades" width="20" class="me-2">
+              Oportunidades
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="icons/servicos.png" alt="Serviços UFC" width="20" class="me-2">
+              Serviços UFC
+            </a>
+          </li>
         </ul>
+
         <div class="d-grid gap-2 mt-3">
       <div class="accordion" id="accordionExample">
         <div class="accordion-item bg-dark text-white border-0 rounded">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed bg-dark text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              ⚙️ Configurações
+            <button class="accordion-button collapsed bg-dark text-white rounded d-flex align-items-center gap-2"
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#flush-collapseOne" 
+                    aria-expanded="false" 
+                    aria-controls="flush-collapseOne">
+              
+              <img src="icons/configuracoes.png" alt="Configurações" width="20" height="20">
+              Configurações
             </button>
+
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body bg-dark rounded-bottom">
@@ -197,10 +239,18 @@
 
         <!-- Área de publicação -->
         <div class="flex-grow-1">
-          <textarea class="campo-texto form-control" placeholder="📢 Publique algo!" rows="2"></textarea>
+          <textarea class="campo-texto form-control" placeholder="Publique algo!" rows="2"></textarea>
           <div class="d-flex gap-2 mt-2">
-            <button class="btn btn-info rounded-pill">Adicionar imagem</button>
-            <button class="btn btn-custom rounded-pill"> Publicar</button>
+            <!-- Botão para abrir modal de imagem -->
+            <button class="btn btn-light rounded-pill d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#modalPublicar">
+              <img src="icons/imagem.png" alt="Adicionar imagem" width="20" height="20">
+              Adicionar imagem
+            </button>
+
+            <!-- Botão para abrir modal de publicação -->
+            <button class="btn btn-custom rounded-pill" data-bs-toggle="modal" data-bs-target="#modalPublicar">
+              Publicar
+            </button> 
           </div>
         </div>
       </div>
@@ -209,7 +259,17 @@
         <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 650px;">
           
           <!-- Postagem 1 -->
-          <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
+          <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
+            <!-- Menu de três pontinhos -->
+            <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
+              <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                &#x22EE; <!-- vertical ellipsis -->
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
+              </ul>
+            </div>
+
             <div class="mb-2">
               <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
               <strong>Professor Evilásio</strong>
@@ -219,13 +279,20 @@
               Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
               fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
             </p>
-            <img src="pictures\image.png" class="img-fluid rounded mb-2" alt="">
+            <img src="pictures/image.png" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
-              <span>❤️ 50</span>
-              <span>💬 11 comentários</span>
-              <span>🔁 Compartilhar</span>
+              <span>
+                <img src="icons/curtida.png" alt="Curtir" width="20" height="20"> 50
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Compartilhar" width="20" height="20"> Compartilhar
+              </span>
             </div>
           </div>
+
 
           <!-- Postagem 2 -->
           <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded">
@@ -239,9 +306,15 @@
             </p>
             <img src="null" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
-              <span>❤️ 34</span>
-              <span>💬 6 comentários</span>
-              <span>🔁 Compartilhar</span>
+              <span>
+                <img src="icons/curtida.png" alt="Curtir" width="20" height="20"> 50
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Compartilhar" width="20" height="20"> Compartilhar
+              </span>
             </div>
           </div>
 
@@ -257,9 +330,15 @@
             </p>
             <img src="null" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
-              <span>❤️ 34</span>
-              <span>💬 6 comentários</span>
-              <span>🔁 Compartilhar</span>
+              <span>
+                <img src="icons/curtida.png" alt="Curtir" width="20" height="20"> 50
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Compartilhar" width="20" height="20"> Compartilhar
+              </span>
             </div>
           </div>
 
@@ -276,9 +355,15 @@
             </p>
             <img src="pictures\image.png" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
-              <span>❤️ 50</span>
-              <span>💬 11 comentários</span>
-              <span>🔁 Compartilhar</span>
+              <span>
+                <img src="icons/curtida.png" alt="Curtir" width="20" height="20"> 50
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
+              </span>
+              <span>
+                <img src="icons/comentario.png" alt="Compartilhar" width="20" height="20"> Compartilhar
+              </span>
             </div>
           </div>
 
@@ -293,15 +378,59 @@
 
       <!-- Sidebar direita -->
       <aside class="col-lg-3 sidebar ms-3">
-        <h5>👥 Minha rede</h5>
+        <h5 class="d-flex align-items-center gap-2">
+            <img src="icons/minhaRedeW.png" alt="Minha rede" width="25.37" height="18.44">
+            Minha rede
+        </h5>
         <ul class="list-unstyled">
-          <li><a href="perfil-ermana.html" class="text-white text-decoration-none">👩‍🏫 Professora Ermana Lopes</a></li>
-          <li><a href="perfil-elmano.html" class="text-white text-decoration-none">👨‍🏫 Prof. Elmano</a></li>
+          <li>
+            <a href="perfil-ermana.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
+              <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+              Professora Ermana Lopes
+            </a>
+          </li>
+          <li>
+            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
+              <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+              Prof. Elmano
+            </a>
+          </li>
         </ul>
-    </aside>
+
+      </aside>
 
     </div>
   </div>
+
+<!-- Modal de Publicação -->
+<div class="modal fade" id="modalPublicar" tabindex="-1" aria-labelledby="modalPublicarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white rounded-4 position-relative" style="min-height: 350px; padding: 1.5rem;">
+
+      <!-- Botão X fixado no topo -->
+      <button type="button" class="btn-close btn-close-white position-absolute" 
+              style="top: 15px; right: 15px;" data-bs-dismiss="modal" aria-label="Fechar"></button>
+
+      <!-- Corpo do modal -->
+      <div class="modal-body pt-0">
+        <!-- Foto + Caixa de texto -->
+        <div class="d-flex align-items-start mb-4 mt-2">
+          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="55" height="55">
+          <textarea class="form-control" placeholder="Compartilhe algo com seus colegas da UFC!" rows="6" style="resize: none; border-radius: 10px;"></textarea>
+        </div>
+
+        <!-- Linha branca separadora -->
+        <hr style="border-top: 1px solid white; opacity: 1;" class="my-4">
+
+        <!-- Botões -->
+        <div class="d-flex gap-4">
+          <button class="btn btn-outline-light w-50">📎 Adicionar imagem</button>
+          <button class="btn btn-custom w-50">Publicar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Bootstrap Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
