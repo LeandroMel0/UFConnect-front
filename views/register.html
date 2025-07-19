@@ -42,20 +42,31 @@
           <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
         </div>
 
-        <div class="mb-3 position-relative">
-          <label for="password" class="form-label">Crie sua senha</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
-          <span class="toggle-password">👁️</span>
+        <!-- Campo de criar senha -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Digite sua senha</label>
+          <div class="input-group">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
+            <span class="input-group-text bg-white border-start-0" id="toggle" style="cursor: pointer;">
+              <img src="icons/mostrar.png" alt="Mostrar senha" width="20" height="20">
+            </span>
+          </div>
         </div>
 
-        <div class="mb-3 position-relative">
-          <label for="confirmPassword" class="form-label">Confirmar senha</label>
-          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Senha" required>
-          <span class="toggle-password">👁️</span>
+        <!-- Campo de confirmar senha -->
+         <div class="mb-3">
+          <label for="password" class="form-label">Confirmar senha</label>
+          <div class="input-group">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
+            <span class="input-group-text bg-white border-start-0" id="toggle-password" style="cursor: pointer;">
+              <img src="icons/mostrar.png" alt="Mostrar senha" width="20" height="20">
+            </span>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-purple w-100 fw-bold mt-2">Finalizar cadastro</button>
       </form>
+
     </div>
   </div>
 
@@ -64,7 +75,7 @@
 
   <!-- Toggle password script -->
   <script>
-    document.querySelectorAll(".toggle-password").forEach(toggle => {
+    document.querySelectorAll("#toggle, #toggle-password").forEach(toggle => {
       toggle.addEventListener("click", () => {
         const input = toggle.previousElementSibling;
         input.type = input.type === "password" ? "text" : "password";

@@ -39,10 +39,14 @@
           <input type="text" name="username" id="email" class="form-control" placeholder="E-mail" required />
         </div>
 
-        <div class="mb-3 position-relative">
+        <div class="mb-3">
           <label for="password" class="form-label">Digite sua senha</label>
-          <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required />
-          <span class="eye-toggle">👁️</span>
+          <div class="input-group">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
+            <span class="input-group-text bg-white border-start-0" id="toggle" style="cursor: pointer;">
+              <img src="icons/mostrar.png" alt="Mostrar senha" width="20" height="20">
+            </span>
+          </div>
         </div>
 
         <button type="submit" class="btn bg-purple text-white w-100 fw-bold rounded-pill">
@@ -54,12 +58,15 @@
 
   <!-- Mostrar/Ocultar senha -->
   <script>
-    const toggle = document.querySelector(".eye-toggle");
+    const toggle = document.getElementById("toggle");
     const passwordInput = document.getElementById("password");
 
     toggle.addEventListener("click", () => {
-      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-      passwordInput.setAttribute("type", type);
-      toggle.textContent = type === "password" ? "👁️" : "👁️";
+      const isPassword = passwordInput.getAttribute("type") === "password";
+      passwordInput.setAttribute("type", isPassword ? "text" : "password");
+
+      // Alterna entre mostrar.png e esconder.png
+      toggle.innerHTML = `<img src="icons/${isPassword ? "mostrar" : "mostrar"}.png" alt="Toggle senha" width="20" height="20">`;
     });
+
   </script>
