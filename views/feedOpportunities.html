@@ -33,23 +33,32 @@
       color: #fff;
     }
 
+   /* Novo laranja */
     .btn-custom {
-      background-color: #a000f0;
+      background-color: #ff7f00;
       color: white;
       border-radius: 20px;
     }
     .btn-custom:hover {
-      background-color: #8e2bb3;
+     background-color: #cc6600;
     }
+
    .btn-red {
-    background-color: #ff3b3b; /* Vermelho vibrante */
-    color: white;
-    border-radius: 20px;
+      background-color: #ff3b3b; /* Vermelho vibrante */
+      color: white;
+      border-radius: 20px;
    }
+
+   .btn-purple {
+      background-color: #6f42c1;
+      color: white;
+      border-radius: 20px;
+    }
 
   .btn-red:hover {
     background-color: #b11414; /* Um tom mais escuro no hover */
   }
+  
   .postagem {
     background-color: #292942;
     border-radius: 10px;
@@ -121,7 +130,7 @@
   }
 
   .sidebar-links a:hover {
-    background-color: #a000f0;
+    background-color: #cc6600;
     color: #ffffff;
   }
 
@@ -185,30 +194,28 @@
     </div>
       <nav class="d-flex gap-3 align-items-center">
         <!-- Botão: Início -->
-      <button onclick="location.href='/feed'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/inicio.png" alt="Início" width="20" height="20">
-        Início
-      </button>
+        <button onclick="location.href='/feed'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
+            <img src="icons/inicio.png" alt="Início" width="20" height="20">
+            Início
+        </button>
 
-      <!-- Botão: Oportunidades -->
-      <button onclick="location.href='feedOpportunities.html'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/oportunidadesB.png" alt="Oportunidades" width="20" height="20">
-        Oportunidades
-      </button>
+        <!-- Botão: Oportunidades -->
+        <button onclick="location.href='feedOpportunities.html'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
+          <img src="icons/oportunidadesB.png" alt="Oportunidades" width="20" height="20">
+          Oportunidades
+        </button>
 
+        <!-- Botão: Notificações -->
+        <button onclick="location.href='/notificacoes'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
+            <img src="icons/notificacoesB.png" alt="Notificações" width="20" height="20">
+            Notificações
+        </button>
 
-      <!-- Botão: Notificações -->
-      <button onclick="location.href='/notificacoes'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/notificacoesB.png" alt="Notificações" width="20" height="20">
-        Notificações
-      </button>
-
-      <!-- Botão: Perfil -->
-      <button onclick="location.href='/perfil'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
-        Perfil
-      </button>
-
+        <!-- Botão: Perfil -->
+        <button onclick="location.href='/perfil'" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
+            <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+            Perfil
+        </button>
       </nav>
   </header>
 
@@ -330,14 +337,13 @@
 
             <div class="mb-2">
               <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Professor Evilásio</strong>
+              <strong>Prof. Thiago</strong>
               <p class="mb-1">Professor de Engenharia de Computação</p>
             </div>
             <p>
-              Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
-              fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
+              Estou compartilhando o processo seletivo para o PET-Saúde. O Programa de Educação pelo Trabalho para a Saúde: Informação e Saúde Digital (PETSaúde/I&SD) é uma nova edição do PET-Saúde, programa do Ministério da Saúde em parceria com o Ministério da Educação que promove a integração entre ensino, serviços de saúde e comunidade, com foco na transformação digital do SUS. São 10 vagas para o curso de Engenharia de Computação, mais informações no edital, só entrar em contato comigo.
             </p>
-            <img src="pictures/image.png" class="img-fluid rounded mb-2" alt="">
+            <img src="" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
               <div class="d-flex gap-5">
                 <button class="btn-invisible like-button" type="button">
@@ -557,13 +563,13 @@
               </h2>
               <div id="collapseDestino" class="accordion-collapse collapse" aria-labelledby="headingDestino" data-bs-parent="#accordionDestinoPublicacao">
                 <div class="accordion-body">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed" checked>
-                    <label class="form-check-label" for="feed">Feed</label>
-                  </div>
                   <div class="form-check mt-2">
                     <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades" value="oportunidades">
                     <label class="form-check-label" for="oportunidades">Oportunidades</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed" checked>
+                    <label class="form-check-label" for="feed">Feed</label>
                   </div>
                 </div>
               </div>
@@ -612,7 +618,7 @@
             btnPublicar.classList.remove('btn-custom');
           } else if (radio.value === 'feed' && radio.checked) {
             // Volta para roxo original
-            btnPublicar.classList.add('btn-custom');
+            btnPublicar.classList.add('btn-purple');
             btnPublicar.classList.remove('btn-publicar-oportunidades');
           }
         });

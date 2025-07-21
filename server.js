@@ -90,6 +90,16 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// tela de oportunidades
+app.get("/feedOpportunities", (req, res) => {
+  if (req.session.usuario) {
+    res.sendFile(__dirname + "/views/feedOpportunities.html");
+  } else {
+    res.redirect("/");
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
