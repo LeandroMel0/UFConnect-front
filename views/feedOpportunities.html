@@ -385,13 +385,41 @@
                   <img src="icons/curtida.png" alt="Curtir" width="20" height="20">
                   <span class="like-count">50</span>
                 </button>
-                <button class="btn-invisible">
+                <button class="btn-invisible" type="button" data-bs-toggle="modal" data-bs-target="#comentariosModal">
                   <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
                 </button>
 
                 <button class="btn-invisible">
                   <img src="icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
                 </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal de Comentários -->
+          <div class="modal fade" id="comentariosModal" tabindex="-1" aria-labelledby="comentariosModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="comentariosModalLabel">Comentários</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Lista de comentários -->
+                  <ul id="listaComentarios" class="list-group mb-3" style="max-height: 300px; overflow-y: auto;">
+                    <!-- Comentários serão inseridos aqui -->
+                  </ul>
+
+                  <!-- Formulário para novo comentário -->
+                  <form id="formComentario">
+                    <div class="mb-3">
+                      <label for="novoComentario" class="form-label">Adicionar comentário</label>
+                      <textarea class="form-control" id="novoComentario" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Comentar</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -608,18 +636,18 @@
                 <div class="accordion-body">
                   <div class="form-check mt-2">
                     <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades"
-                      value="oportunidades">
+                      value="oportunidades" checked>
                     <label class="form-check-label" for="oportunidades">Oportunidades</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed"
-                      checked>
+                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed">
                     <label class="form-check-label" for="feed">Feed</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
 
           <!-- Botões -->
           <div class="d-flex gap-4">
@@ -637,6 +665,48 @@
 
   <!-- Bootstrap Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Lista inicial de comentários (exemplo)
+    const comentarios = [
+      { autor: "Maria", texto: "Parabéns pelo ótimo trabalho!" },
+      { autor: "João", texto: "O UFConnect é sensacional mesmo." },
+      { autor: "Ana", texto: "Muito orgulho dos alunos!" }
+    ];
+
+    const listaComentarios = document.getElementById('listaComentarios');
+    const formComentario = document.getElementById('formComentario');
+    const novoComentarioInput = document.getElementById('novoComentario');
+
+    // Função para atualizar a lista no modal
+    function atualizarListaComentarios() {
+      listaComentarios.innerHTML = ''; // limpa a lista
+      comentarios.forEach((c) => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item');
+        li.innerHTML = `<strong>${c.autor}:</strong> ${c.texto}`;
+        listaComentarios.appendChild(li);
+      });
+    }
+
+    // Quando o modal abrir, atualizar a lista
+    const comentariosModal = document.getElementById('comentariosModal');
+    comentariosModal.addEventListener('show.bs.modal', () => {
+      atualizarListaComentarios();
+    });
+
+    // Ao enviar o formulário de comentário, adiciona novo comentário
+    formComentario.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const texto = novoComentarioInput.value.trim();
+      if (texto) {
+        comentarios.push({ autor: "Você", texto }); // autor fixo por exemplo
+        novoComentarioInput.value = '';
+        atualizarListaComentarios();
+      }
+    });
+  </script>
 
   <script>
     document.querySelectorAll('.like-button').forEach(button => {
