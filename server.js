@@ -3,14 +3,19 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 
+const axios = require("axios");
+
 const app = express();
 const PORT = 3000;
 
+//EJS 
+// Configura o EJS como engine de visualização
+app.set('view engine', 'ejs');
+
+// Pasta onde estão os arquivos .ejs
+app.set('views', __dirname + '/views');
+
 // Usuário de exemplo (normalmente viria de um banco de dados)
-const usuarioFake = {
-  username: "kinkas@gmail.com",
-  passwordHash: bcrypt.hashSync("kinkas", 10), // senha criptografada
-};
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,6 +24,9 @@ app.use(
     secret: "segredo-super-seguro",
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      maxAge: 60 * 60 * 1000 // 1h
+    }
   })
 );
 app.use(express.static("views")); // Serve HTML estático
@@ -27,62 +35,101 @@ app.use(express.static("views")); // Serve HTML estático
 
 // tela inical
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/telaInicial.html");
+  res.render("telaInicial");
 });
 
 // tela de login
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/views/login.html");
+  res.render("login");
 });
 
 app.get("/loginerror", (req, res) => {
-  res.sendFile(__dirname + "/views/loginerror.html");
+  res.render("loginerror");
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  if (
-    username === usuarioFake.username &&
-    bcrypt.compareSync(password, usuarioFake.passwordHash)
-  ) {
-    req.session.usuario = username;
-    res.redirect("/feed");
-  } else {
-    res.redirect("/loginerror");
+  const email = username;
+
+
+  try {
+    const response = await axios.post('http://localhost:2000/user/login', {
+      email,
+      password
+    });
+
+    if (response.status == 200) {
+
+      // Salvar no localStorage, se quiser
+      req.session.usuario = {
+        id: response.data.id,
+        token: response.data.token
+      };
+
+      res.redirect("/feed")
+
+    } else {
+
+      res.redirect('/loginerror');
+    }
+  } catch (error) {
+    //console.log(error)
+    res.redirect('/loginerror')
   }
+
 });
 
 // tela de registro
 app.get("/register", (req, res) => {
-  res.sendFile(__dirname + "/views/register.html");
-});
-
-app.get("/registererror", (req, res) => {
-  res.sendFile(__dirname + "/views/registererror.html");
+  res.render("register");
 });
 
 app.get("/registersuccess", (req, res) => {
-  res.sendFile(__dirname + "/views/registersuccess.html");
+  res.render("registersuccess");
 });
 
 // Lógica de registro (simples)
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
   const { email, password, confirmPassword } = req.body;
   if (password == confirmPassword) {
     // Aqui você pode salvar em banco de dados
-    res.redirect("/registersuccess");
+    try {
+      const response = await axios.post('http://localhost:2000/user/create', {
+        email,
+        password
+      });
+
+      //Verifica se foi salvo
+      if (response.status == 201) {
+        return res.redirect("/registersuccess");
+      } else {
+        return res.render('registererror',{"erro": (response.data.error || "Erro interno")});
+      }
+    } catch (error) {
+
+      return res.render('registererror',{"erro":error.response.data.error})
+
+    }
     // res.send("Cadastro realizado com sucesso!");
-  } else{
-    res.redirect("/registererror");
+  } else {
+    return res.render("registererror",{"erro":"As senhas não as mesmas"});
   }
 });
 
-app.get("/feed", (req, res) => {
-  if (req.session.usuario) {
-    res.sendFile(__dirname + "/views/feed.html");
-  } else {
-    res.redirect("/");
+app.get("/feed", async (req, res) => {
+
+  if (!req.session.usuario) {
+    return res.redirect("/");
   }
+
+  const user_id = req.session.usuario.id;
+
+  const user_info = await axios.get(`http://localhost:2000/user/get/${user_id}`)
+  const posts = await axios.get(`http://localhost:2000/post/list`)
+
+
+  res.render("feed", { "user_info": user_info.data, "posts": posts.data });
+
 });
 
 app.get("/logout", (req, res) => {
@@ -93,7 +140,7 @@ app.get("/logout", (req, res) => {
 // tela de oportunidades
 app.get("/feedOpportunities", (req, res) => {
   if (req.session.usuario) {
-    res.sendFile(__dirname + "/views/feedOpportunities.html");
+    res.render("feedOpportunities");
   } else {
     res.redirect("/");
   }
