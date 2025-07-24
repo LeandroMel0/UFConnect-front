@@ -38,26 +38,19 @@
       color: #fff;
     }
 
-    /* Novo laranja */
     .btn-custom {
-      background-color: #ff7f00;
+      background-color: #a000f0;
       color: white;
       border-radius: 20px;
     }
 
     .btn-custom:hover {
-      background-color: #cc6600;
+      background-color: #8e2bb3;
     }
 
     .btn-red {
       background-color: #ff3b3b;
       /* Vermelho vibrante */
-      color: white;
-      border-radius: 20px;
-    }
-
-    .btn-purple {
-      background-color: #6f42c1;
       color: white;
       border-radius: 20px;
     }
@@ -147,7 +140,7 @@
     }
 
     .sidebar-links a:hover {
-      background-color: #cc6600;
+      background-color: #a000f0;
       color: #ffffff;
     }
 
@@ -226,6 +219,7 @@
         Oportunidades
       </button>
 
+
       <!-- Botão: Notificações -->
       <button onclick="location.href='/notificacoes'"
         class="btn text-white text-decoration-none d-flex align-items-center gap-2">
@@ -239,6 +233,7 @@
         <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
         Perfil
       </button>
+
     </nav>
   </header>
 
@@ -283,13 +278,10 @@
             </a>
           </li>
           <li>
-            <a href="feedOpportunities.html"
-              class="text-white text-decoration-none d-flex align-items-center p-2 rounded"
-              style="background-color: orange;">
-              <img src="icons/oportunidadesR.png" alt="Oportunidades" width="20" class="me-2">
+            <a href="feedOpportunities.html" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="icons/oportunidades.png" alt="Oportunidades" width="20" class="me-2">
               Oportunidades
             </a>
-
           </li>
           <li>
             <a href="#" class="text-white text-decoration-none d-flex align-items-center">
@@ -368,17 +360,14 @@
 
             <div class="mb-2">
               <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Prof. Thiago</strong>
+              <strong>Professor Evilásio</strong>
               <p class="mb-1">Professor de Engenharia de Computação</p>
             </div>
             <p>
-              Estou compartilhando o processo seletivo para o PET-Saúde. O Programa de Educação pelo Trabalho para a
-              Saúde: Informação e Saúde Digital (PETSaúde/I&SD) é uma nova edição do PET-Saúde, programa do Ministério
-              da Saúde em parceria com o Ministério da Educação que promove a integração entre ensino, serviços de saúde
-              e comunidade, com foco na transformação digital do SUS. São 10 vagas para o curso de Engenharia de
-              Computação, mais informações no edital, só entrar em contato comigo.
+              Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
+              fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
             </p>
-            <img src="" class="img-fluid rounded mb-2" alt="">
+            <img src="pictures/image.png" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
               <div class="d-flex gap-5">
                 <button class="btn-invisible like-button" type="button">
@@ -606,15 +595,15 @@
               <div id="collapseDestino" class="accordion-collapse collapse" aria-labelledby="headingDestino"
                 data-bs-parent="#accordionDestinoPublicacao">
                 <div class="accordion-body">
-                  <div class="form-check mt-2">
-                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades"
-                      value="oportunidades">
-                    <label class="form-check-label" for="oportunidades">Oportunidades</label>
-                  </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed"
                       checked>
                     <label class="form-check-label" for="feed">Feed</label>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades"
+                      value="oportunidades">
+                    <label class="form-check-label" for="oportunidades">Oportunidades</label>
                   </div>
                 </div>
               </div>
@@ -663,7 +652,7 @@
             btnPublicar.classList.remove('btn-custom');
           } else if (radio.value === 'feed' && radio.checked) {
             // Volta para roxo original
-            btnPublicar.classList.add('btn-purple');
+            btnPublicar.classList.add('btn-custom');
             btnPublicar.classList.remove('btn-publicar-oportunidades');
           }
         });

@@ -38,26 +38,19 @@
       color: #fff;
     }
 
-    /* Novo laranja */
     .btn-custom {
-      background-color: #ff7f00;
+      background-color: #a000f0;
       color: white;
       border-radius: 20px;
     }
 
     .btn-custom:hover {
-      background-color: #cc6600;
+      background-color: #8e2bb3;
     }
 
     .btn-red {
       background-color: #ff3b3b;
       /* Vermelho vibrante */
-      color: white;
-      border-radius: 20px;
-    }
-
-    .btn-purple {
-      background-color: #6f42c1;
       color: white;
       border-radius: 20px;
     }
@@ -147,7 +140,7 @@
     }
 
     .sidebar-links a:hover {
-      background-color: #cc6600;
+      background-color: #a000f0;
       color: #ffffff;
     }
 
@@ -197,6 +190,19 @@
       color: #000;
       border-color: #000;
     }
+
+    .text-purple {
+      color: #8e2bb3;
+    }
+
+    .border-purple {
+      border-color: #8e2bb3 !important;
+    }
+
+    .perfil-box {
+      background-color: #f7f7f7;
+      color: #121223;
+    }
   </style>
 
 </head>
@@ -226,6 +232,7 @@
         Oportunidades
       </button>
 
+
       <!-- Botão: Notificações -->
       <button onclick="location.href='/notificacoes'"
         class="btn text-white text-decoration-none d-flex align-items-center gap-2">
@@ -234,11 +241,11 @@
       </button>
 
       <!-- Botão: Perfil -->
-      <button onclick="location.href='/perfil'"
-        class="btn text-white text-decoration-none d-flex align-items-center gap-2">
+      <button id="btnPerfil" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
         <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
         Perfil
       </button>
+
     </nav>
   </header>
 
@@ -248,26 +255,6 @@
 
       <!-- Sidebar esquerda -->
       <aside class="col-lg-3 sidebar me-3" style=" width: 250px; margin-left: 0;">
-        <div class="perfil-card text-center bg-light text-dark rounded overflow-hidden shadow-sm">
-          <div class="banner-perfil"
-            style="background-image: url('pictures/banner.jpg'); height: 80px; background-size: cover; background-position: center;">
-          </div>
-
-          <button class="posicao-foto-perfil p-0 border-0 bg-transparent" onclick="location.href='perfil.html'">
-            <img src="pictures/perfil.jpg" alt="Foto de perfil"
-              class="foto-perfil rounded-circle border border-3 border-white">
-          </button>
-
-          <div class="pt-4 pb-3">
-            <h5 class="mb-0 fw-bold">Professor Evilásio</h5>
-            <p class="mb-1 text-muted small">Professor de Engenharia de Computação</p>
-            <p class="text-muted small mb-2">
-              <img src="icons/localizacao.png" alt="Localização" width="10" class="me-1">
-              Sobral, Ceará
-            </p>
-          </div>
-        </div>
-
         <ul class="list-unstyled sidebar-links">
           <li class="mb-2"></li>
           <li>
@@ -283,13 +270,10 @@
             </a>
           </li>
           <li>
-            <a href="feedOpportunities.html"
-              class="text-white text-decoration-none d-flex align-items-center p-2 rounded"
-              style="background-color: orange;">
-              <img src="icons/oportunidadesR.png" alt="Oportunidades" width="20" class="me-2">
+            <a href="feedOpportunities.html" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="icons/oportunidades.png" alt="Oportunidades" width="20" class="me-2">
               Oportunidades
             </a>
-
           </li>
           <li>
             <a href="#" class="text-white text-decoration-none d-flex align-items-center">
@@ -325,26 +309,50 @@
       <!-- Conteúdo principal -->
       <main class="col-lg-6 d-flex flex-column">
 
-        <!-- Caixa de publicação -->
-        <div class="d-flex align-items-start mb-3">
-          <!-- Imagem de usuário -->
-          <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+        <!-- Caixa de perfil -->
+        <div class="w-100 mb-3 d-flex">
+          <div class="card perfil-box shadow rounded-3 w-100 overflow-hidden border-0">
 
-          <!-- Área de publicação -->
-          <div class="flex-grow-1">
-            <textarea class="campo-texto form-control" placeholder="Publique algo!" rows="2"></textarea>
-            <div class="d-flex gap-2 mt-2">
-              <!-- Botão para abrir modal de imagem -->
-              <button class="btn btn-light rounded-pill d-flex align-items-center gap-2" data-bs-toggle="modal"
-                data-bs-target="#modalPublicar">
-                <img src="icons/imagem.png" alt="Adicionar imagem" width="20" height="20">
-                Adicionar imagem
-              </button>
+            <!-- Banner do professor -->
+            <img src="pictures/banner.jpg" class="w-100" alt="Banner do professor"
+              style="height: 160px; object-fit: cover;">
 
-              <!-- Botão para abrir modal de publicação -->
-              <button class="btn btn-custom rounded-pill" data-bs-toggle="modal" data-bs-target="#modalPublicar">
-                Publicar
-              </button>
+            <!-- Corpo do card -->
+            <div class="p-4 bg-light text-dark position-relative">
+
+              <!-- Foto de perfil sobreposta -->
+              <div style="position: absolute; top: -40px; left: 24px;">
+                <img src="pictures/perfil.jpg" alt="Foto de perfil"
+                  class="rounded-circle border border-3 border-white shadow"
+                  style="width: 100px; height: 100px; object-fit: cover;">
+              </div>
+
+              <!-- Conteúdo -->
+              <div class="ps-5 mt-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="fw-bold mb-0">Professor Evilásio</h5>
+                  <a href="#" class="btn btn-outline-info btn-sm rounded-pill fw-semibold px-3  mb-4">Editar perfil</a>
+                </div>
+                <p class="mb-4">Sou professor da UFC desde 2024, onde ministro as matérias de Engenharia de Software e
+                  Paradigmas de Programação. Contato: <a href="mailto:evilasio@alu.ufc.br">evilasio@alu.ufc.br</a></p>
+                <p class="text-muted small mb-3">
+                  <img src="icons/localizacao.png" alt="Localização" width="10" class="me-1">
+                  Sobral, Ceará
+                </p>
+
+                <div class="d-flex flex-wrap gap-2">
+                  <span
+                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Engenharia
+                    de Software</span>
+                  <span
+                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Inteligência
+                    Artificial</span>
+                  <span
+                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Back-End</span>
+                  <span
+                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Automação</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -363,22 +371,20 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
+                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
               </ul>
             </div>
 
             <div class="mb-2">
               <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Prof. Thiago</strong>
+              <strong>Professor Evilásio</strong>
               <p class="mb-1">Professor de Engenharia de Computação</p>
             </div>
             <p>
-              Estou compartilhando o processo seletivo para o PET-Saúde. O Programa de Educação pelo Trabalho para a
-              Saúde: Informação e Saúde Digital (PETSaúde/I&SD) é uma nova edição do PET-Saúde, programa do Ministério
-              da Saúde em parceria com o Ministério da Educação que promove a integração entre ensino, serviços de saúde
-              e comunidade, com foco na transformação digital do SUS. São 10 vagas para o curso de Engenharia de
-              Computação, mais informações no edital, só entrar em contato comigo.
+              Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
+              fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
             </p>
-            <img src="" class="img-fluid rounded mb-2" alt="">
+            <img src="pictures/image.png" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
               <div class="d-flex gap-5">
                 <button class="btn-invisible like-button" type="button">
@@ -408,6 +414,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
+                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
               </ul>
             </div>
 
@@ -450,6 +457,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
+                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
               </ul>
             </div>
 
@@ -491,6 +499,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
+                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
               </ul>
             </div>
 
@@ -606,15 +615,15 @@
               <div id="collapseDestino" class="accordion-collapse collapse" aria-labelledby="headingDestino"
                 data-bs-parent="#accordionDestinoPublicacao">
                 <div class="accordion-body">
-                  <div class="form-check mt-2">
-                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades"
-                      value="oportunidades">
-                    <label class="form-check-label" for="oportunidades">Oportunidades</label>
-                  </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed"
                       checked>
                     <label class="form-check-label" for="feed">Feed</label>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades"
+                      value="oportunidades">
+                    <label class="form-check-label" for="oportunidades">Oportunidades</label>
                   </div>
                 </div>
               </div>
@@ -663,7 +672,7 @@
             btnPublicar.classList.remove('btn-custom');
           } else if (radio.value === 'feed' && radio.checked) {
             // Volta para roxo original
-            btnPublicar.classList.add('btn-purple');
+            btnPublicar.classList.add('btn-custom');
             btnPublicar.classList.remove('btn-publicar-oportunidades');
           }
         });

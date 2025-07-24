@@ -146,6 +146,15 @@ app.get("/feedOpportunities", (req, res) => {
   }
 });
 
+//tela do perfil 
+app.get("/perfil", (req, res) => {
+  if (req.session.usuario) {
+    res.sendFile(__dirname + "/views/perfil.html");
+  } else {
+    res.redirect("/");
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
