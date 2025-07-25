@@ -53,7 +53,7 @@ app.post("/login", async (req, res) => {
 
 
   try {
-    const response = await axios.post('http://localhost:2000/user/login', {
+    const response = await axios.post('https://ufconnect.onrender.com/user/login', {
       email,
       password
     });
@@ -94,7 +94,7 @@ app.post("/register", async (req, res) => {
   if (password == confirmPassword) {
     // Aqui você pode salvar em banco de dados
     try {
-      const response = await axios.post('http://localhost:2000/user/create', {
+      const response = await axios.post('https://ufconnect.onrender.com/user/create', {
         email,
         password
       });
@@ -106,7 +106,7 @@ app.post("/register", async (req, res) => {
         return res.render('registererror',{"erro": (response.data.error || "Erro interno")});
       }
     } catch (error) {
-
+      
       return res.render('registererror',{"erro":error.response.data.error})
 
     }
@@ -116,6 +116,29 @@ app.post("/register", async (req, res) => {
   }
 });
 
+
+app.get("/get/token", (req, res)=>{
+
+  return res.status(200).json({"token":req.session.usuario.token})
+
+})
+
+app.get("/feedOpportunities", async (req, res)=>{
+
+  if (!req.session.usuario) {
+    return res.redirect("/");
+  }
+
+  const user_id = req.session.usuario.id;
+
+  const user_info = await axios.get(`https://ufconnect.onrender.com/user/get/${user_id}`)
+  const posts = await axios.get(`https://ufconnect.onrender.com/post/list?tipo=1`)
+
+
+  res.render("feedOpportunities", { "user_info": user_info.data, "posts": posts.data,"token":req.session.usuario.tonken});
+
+})
+
 app.get("/feed", async (req, res) => {
 
   if (!req.session.usuario) {
@@ -124,11 +147,11 @@ app.get("/feed", async (req, res) => {
 
   const user_id = req.session.usuario.id;
 
-  const user_info = await axios.get(`http://localhost:2000/user/get/${user_id}`)
-  const posts = await axios.get(`http://localhost:2000/post/list`)
+  const user_info = await axios.get(`https://ufconnect.onrender.com/user/get/${user_id}`)
+  const posts = await axios.get(`https://ufconnect.onrender.com/post/list?tipo=0`)
 
 
-  res.render("feed", { "user_info": user_info.data, "posts": posts.data });
+  res.render("feed", { "user_info": user_info.data, "posts": posts.data,"token":req.session.usuario.tonken});
 
 });
 
@@ -147,14 +170,29 @@ app.get("/feedOpportunities", (req, res) => {
 });
 
 //tela do perfil 
-app.get("/perfil", (req, res) => {
+app.get("/perfil/:id",async (req, res) => {
+
+  const user_get = req.params.id;
+
   if (req.session.usuario) {
-    res.sendFile(__dirname + "/views/perfil.html");
+    const responde = await axios.get(`https://ufconnect.onrender.com/user/get/${user_get}`)
+    const responde_2 = await axios.get(`https://ufconnect.onrender.com/post/user/${user_get}`)
+    if(responde.data){
+      return res.render('perfil',{'user_data':responde.data, "posts":responde_2.data})
+    } 
   } else {
     res.redirect("/");
   }
+
+
+
+
 });
 
+app.get('/perfiltest', (req, res) =>{
+
+  res.render('feed1')
+})
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UFConnect</title>
+  <link rel="icon" href="/icons/UFConnect.png" type="image/x-icon"> <!--Icone do site-->
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -210,25 +211,25 @@
 <body>
   <!-- HEADER -->
   <header class="fixed-top w-100 py-3 px-4 d-flex justify-content-between align-items-center">
-    <img src="pictures/UFConnect.png" alt="logo" width="150" height="50" class="logo-img align-self-center">
+    <img src="/pictures/UFConnect.png" alt="logo" width="150" height="50" class="logo-img align-self-center">
     <div class="input-group" style="width: 700px; margin-left: 1%;">
       <input type="text" class="form-control form-control-sm barra-pesquisa" placeholder="Pesquisar...">
       <button class="btn btn-custom" type="button">
-        <img src="icons/buscar.png" alt="Buscar" width="20" height="20">
+        <img src="/icons/buscar.png" alt="Buscar" width="20" height="20">
       </button>
     </div>
     <nav class="d-flex gap-3 align-items-center">
       <!-- Botão: Início -->
       <button onclick="location.href='/feed'"
         class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/inicio.png" alt="Início" width="20" height="20">
+        <img src="/icons/inicio.png" alt="Início" width="20" height="20">
         Início
       </button>
 
       <!-- Botão: Oportunidades -->
-      <button onclick="location.href='feedOpportunities.html'"
+      <button onclick="location.href='feedOpportunities'"
         class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/oportunidadesB.png" alt="Oportunidades" width="20" height="20">
+        <img src="/icons/oportunidadesB.png" alt="Oportunidades" width="20" height="20">
         Oportunidades
       </button>
 
@@ -236,13 +237,13 @@
       <!-- Botão: Notificações -->
       <button onclick="location.href='/notificacoes'"
         class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/notificacoesB.png" alt="Notificações" width="20" height="20">
+        <img src="/icons/notificacoesB.png" alt="Notificações" width="20" height="20">
         Notificações
       </button>
 
       <!-- Botão: Perfil -->
       <button id="btnPerfil" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
-        <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+        <img src="/icons/perfil.png" alt="Perfil" width="20" height="20">
         Perfil
       </button>
 
@@ -259,25 +260,25 @@
           <li class="mb-2"></li>
           <li>
             <a href="#" class="text-white text-decoration-none d-flex align-items-center">
-              <img src="icons/notificacoes.png" alt="Notificações" width="20" class="me-2">
+              <img src="/icons/notificacoes.png" alt="Notificações" width="20" class="me-2">
               Notificações
             </a>
           </li>
           <li>
             <a href="#" class="text-white text-decoration-none d-flex align-items-center">
-              <img src="icons/salvos.png" alt="Itens Salvos" width="20" class="me-2">
+              <img src="/icons/salvos.png" alt="Itens Salvos" width="20" class="me-2">
               Itens Salvos
             </a>
           </li>
           <li>
-            <a href="feedOpportunities.html" class="text-white text-decoration-none d-flex align-items-center">
-              <img src="icons/oportunidades.png" alt="Oportunidades" width="20" class="me-2">
+            <a href="feedOpportunities" class="text-white text-decoration-none d-flex align-items-center">
+              <img src="/icons/oportunidades.png" alt="Oportunidades" width="20" class="me-2">
               Oportunidades
             </a>
           </li>
           <li>
             <a href="#" class="text-white text-decoration-none d-flex align-items-center">
-              <img src="icons/servicos.png" alt="Serviços UFC" width="20" class="me-2">
+              <img src="/icons/servicos.png" alt="Serviços UFC" width="20" class="me-2">
               Serviços UFC
             </a>
           </li>
@@ -291,7 +292,7 @@
                   type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                   aria-controls="flush-collapseOne">
 
-                  <img src="icons/configuracoes.png" alt="Configurações" width="20" height="20">
+                  <img src="/icons/configuracoes.png" alt="Configurações" width="20" height="20">
                   Configurações
                 </button>
 
@@ -314,47 +315,51 @@
           <div class="card perfil-box shadow rounded-3 w-100 overflow-hidden border-0">
 
             <!-- Banner do professor -->
-            <img src="pictures/banner.jpg" class="w-100" alt="Banner do professor"
+            <img src="/pictures/banner.jpg" class="w-100" alt="Banner do professor"
               style="height: 160px; object-fit: cover;">
-
             <!-- Corpo do card -->
             <div class="p-4 bg-light text-dark position-relative">
-
               <!-- Foto de perfil sobreposta -->
               <div style="position: absolute; top: -40px; left: 24px;">
-                <img src="pictures/perfil.jpg" alt="Foto de perfil"
-                  class="rounded-circle border border-3 border-white shadow"
-                  style="width: 100px; height: 100px; object-fit: cover;">
+                <% if(user_data.avatar_url==null){%>
+                  <img src="/pictures/perfil.jpg" alt="Foto de perfil"
+                    class="rounded-circle border border-3 border-white shadow"
+                    style="width: 100px; height: 100px; object-fit: cover;">
+                  <%}else{%>
+                    <img src="<%=user_data.avatar_url%>" alt="Foto de perfil"
+                      class="rounded-circle border border-3 border-white shadow"
+                      style="width: 100px; height: 100px; object-fit: cover;">
+                    <%}%>
               </div>
 
               <!-- Conteúdo -->
               <div class="ps-5 mt-5">
                 <div class="d-flex justify-content-between align-items-center">
-                  <h5 class="fw-bold mb-0">Professor Evilásio</h5>
+                  <h5 class="fw-bold mb-0">
+                    <%=user_data.nome%>
+                  </h5>
                   <!-- Botão que abre o modal -->
                   <button class="btn btn-outline-info btn-sm rounded-pill fw-semibold px-3 mb-4" data-bs-toggle="modal"
                     data-bs-target="#modalEditarPerfil">
                     Editar perfil
                   </button>
                 </div>
-                <p class="mb-4">Sou professor da UFC desde 2024, onde ministro as matérias de Engenharia de Software e
-                  Paradigmas de Programação. Contato: <a href="mailto:evilasio@alu.ufc.br">evilasio@alu.ufc.br</a></p>
+                <p class="mb-4">
+                  <%=user_data.bio%>
+                </p>
                 <p class="text-muted small mb-3">
-                  <img src="icons/localizacao.png" alt="Localização" width="10" class="me-1">
-                  Sobral, Ceará
+                  <img src="/icons/localizacao.png" alt="Localização" width="10" class="me-1">
+                  <%=user_data.cidade%>, <%=user_data.estado%>
                 </p>
 
                 <div class="d-flex flex-wrap gap-2">
-                  <span
+                  <!-- TAgs-->
+                  <!-- <span
                     class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Engenharia
                     de Software</span>
                   <span
                     class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Inteligência
-                    Artificial</span>
-                  <span
-                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Back-End</span>
-                  <span
-                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Automação</span>
+                    Artificial</span>-->
                 </div>
               </div>
             </div>
@@ -362,16 +367,12 @@
         </div>
 
         <!-- Caixa de postagens com rolagem -->
-        <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 650px;">
 
-          <!-- Postagem 1 támbem post coringa -->
-          <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
-
-            <!-- Menu de três pontinhos -->
+        <!-- 
             <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
               <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                &#x22EE; <!-- vertical ellipsis -->
+                &#x22EE;  vertical ellipsis 
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
@@ -380,7 +381,7 @@
             </div>
 
             <div class="mb-2">
-              <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
+              <img src="/pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
               <strong>Professor Evilásio</strong>
               <p class="mb-1">Professor de Engenharia de Computação</p>
             </div>
@@ -388,23 +389,89 @@
               Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
               fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
             </p>
-            <img src="pictures/image.png" class="img-fluid rounded mb-2" alt="">
+            <img src="null" class="img-fluid rounded mb-2" alt="">
             <div class="d-flex justify-content-around text-white-50">
               <div class="d-flex gap-5">
                 <button class="btn-invisible like-button" type="button">
-                  <img src="icons/curtida.png" alt="Curtir" width="20" height="20">
+                  <img src="/icons/curtida.png" alt="Curtir" width="20" height="20">
                   <span class="like-count">50</span>
                 </button>
-                <button class="btn-invisible" type="button" data-bs-toggle="modal" data-bs-target="#comentariosModal">
-                  <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
+                <button class="btn-invisible">
+                  <img src="/icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
                 </button>
 
-
                 <button class="btn-invisible">
-                  <img src="icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
+                  <img src="/icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
                 </button>
               </div>
             </div>
+          </div> -->
+
+
+
+
+        <!-- Postagem 2 -->
+        <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
+
+          <!-- Postagem 1 támbem post coringa -->
+          <div class="flex-grow-1 overflow-auto bg-dark rounded p-3" style="max-height: 650px;">
+            <% if (posts.length> 0) { %>
+              <% posts.forEach(post=> { %>
+                <!-- Postagem -->
+                <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
+                  <!-- Menu de três pontinhos -->
+                  <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
+                    <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      &#x22EE;
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" onclick="deletarPost(<%=post.id%>)">DELETAR</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="mb-2">
+
+                    <img src="<%=post.avatar_url || 'pictures/perfil.jpg'%>" alt="Foto de perfil"
+                      class="rounded-circle me-3" width="50" height="50">
+                    <strong>
+                      <%= post.nome %>
+                    </strong>
+                    <p class="mb-1">
+                      <%= post.cargo %>
+                    </p>
+                  </div>
+
+                  <p>
+                    <%= post.texto %>
+                  </p>
+                  <%if(post.imagem_url){%>
+                    <img src="<%=post.imagem_url%>" class="object-fit-cover w-100 h-100">
+                    <%}%>
+                      <div class="d-flex justify-content-around text-white-50" style="margin-top: 2%;">
+                        <div class="d-flex gap-5">
+                          <button class="btn-invisible like-button" type="button">
+                            <img src="icons/curtida.png" alt="Curtir" width="20" height="20">
+                            <span class="like-count">50</span>
+                          </button>
+                          <button class="btn-invisible">
+                            <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
+                          </button>
+                          <button class="btn-invisible">
+                            <img src="icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
+                          </button>
+                        </div>
+                      </div>
+
+                </div>
+
+                <% }) %>
+                  <% } %>
+
+                    <div class="spinner-border" role="status"
+                      style="position:sticky; top: 50%;left: 50%;width: 3rem; height: 3rem; z-index: 1050;">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
           </div>
 
           <!-- Modal de Comentários -->
@@ -435,140 +502,6 @@
             </div>
           </div>
 
-          <!-- Postagem 2 -->
-          <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
-
-            <!-- Menu de três pontinhos -->
-            <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
-              <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                &#x22EE; <!-- vertical ellipsis -->
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
-                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
-              </ul>
-            </div>
-
-            <div class="mb-2">
-              <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Professor Evilásio</strong>
-              <p class="mb-1">Professor de Engenharia de Computação</p>
-            </div>
-            <p>
-              Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
-              fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
-            </p>
-            <img src="null" class="img-fluid rounded mb-2" alt="">
-            <div class="d-flex justify-content-around text-white-50">
-              <div class="d-flex gap-5">
-                <button class="btn-invisible like-button" type="button">
-                  <img src="icons/curtida.png" alt="Curtir" width="20" height="20">
-                  <span class="like-count">50</span>
-                </button>
-                <button class="btn-invisible">
-                  <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
-                </button>
-
-                <button class="btn-invisible">
-                  <img src="icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
-                </button>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Postagem 3 -->
-          <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
-
-            <!-- Menu de três pontinhos -->
-            <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
-              <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                &#x22EE; <!-- vertical ellipsis -->
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
-                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
-              </ul>
-            </div>
-
-            <div class="mb-2">
-              <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Prof. Elmano</strong>
-              <p class="mb-1">Engenharia Elétrica</p>
-            </div>
-            <p>
-              Finalizamos o projeto de robótica com sucesso! Obrigado, turma!
-            </p>
-            <img src="null" class="img-fluid rounded mb-2" alt="">
-            <div class="d-flex justify-content-around text-white-50">
-              <div class="d-flex gap-5">
-                <button class="btn-invisible like-button" type="button">
-                  <img src="icons/curtida.png" alt="Curtir" width="20" height="20">
-                  <span class="like-count">50</span>
-                </button>
-
-                <button class="btn-invisible">
-                  <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
-                </button>
-
-                <button class="btn-invisible">
-                  <img src="icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Postagem 4 -->
-          <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
-
-            <!-- Menu de três pontinhos -->
-            <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
-              <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                &#x22EE; <!-- vertical ellipsis -->
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
-                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
-              </ul>
-            </div>
-
-            <div class="mb-2">
-              <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Professor Evilásio</strong>
-              <p class="mb-1">Professor de Engenharia de Computação</p>
-            </div>
-            <p>
-              Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
-              fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
-            </p>
-            <img src="pictures\image.png" class="img-fluid rounded mb-2" alt="">
-            <div class="d-flex justify-content-around text-white-50">
-              <div class="d-flex gap-5">
-                <button class="btn-invisible like-button" type="button">
-                  <img src="icons/curtida.png" alt="Curtir" width="20" height="20">
-                  <span class="like-count">50</span>
-                </button>
-
-                <button class="btn-invisible">
-                  <img src="icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
-                </button>
-
-                <button class="btn-invisible">
-                  <img src="icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
-                </button>
-              </div>
-            </div>
-
-
-          </div>
-
-          <div class="spinner-border" role="status"
-            style="position:sticky; top: 50%;left: 50%;width: 3rem; height: 3rem; z-index: 1050;">
-            <span class="visually-hidden">Loading...</span>
-          </div>
 
           <!-- Adicione mais postagens conforme desejar -->
 
@@ -578,31 +511,31 @@
       <!-- Sidebar direita -->
       <aside class="col-lg-3 sidebar ms-3">
         <h5 class="d-flex align-items-center gap-2">
-          <img src="icons/minhaRedeW.png" alt="Minha rede" width="25.37" height="18.44">
+          <img src="/icons/minhaRedeW.png" alt="Minha rede" width="25.37" height="18.44">
           Minha rede
         </h5>
         <ul class="list-unstyled">
           <li class="mb-2">
-            <a href="perfil-ermana.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
-              <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+              <img src="/icons/perfil.png" alt="Perfil" width="20" height="20">
               Professora Ermana Lopes
             </a>
           </li>
           <li class="mb-2">
-            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
-              <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+              <img src="/icons/perfil.png" alt="Perfil" width="20" height="20">
               Prof. Elmano
             </a>
           </li>
           <li class="mb-2">
-            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
-              <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+              <img src="/icons/perfil.png" alt="Perfil" width="20" height="20">
               Prof. Jarbas
             </a>
           </li>
           <li class="mb-2">
-            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
-              <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
+            <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
+              <img src="/icons/perfil.png" alt="Perfil" width="20" height="20">
               Professora Nilena
             </a>
           </li>
@@ -627,7 +560,7 @@
         <div class="modal-body pt-0">
           <!-- Foto + Caixa de texto -->
           <div class="d-flex align-items-start mb-4 mt-2">
-            <img src="pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="55" height="55">
+            <img src="/pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="55" height="55">
             <textarea class="form-control" placeholder="Compartilhe algo com seus colegas da UFC!" rows="6"
               style="resize: none; border-radius: 10px;"></textarea>
           </div>
@@ -665,7 +598,7 @@
           <!-- Botões -->
           <div class="d-flex gap-4">
             <button class="btn btn-white-custom w-50 d-flex align-items-center justify-content-center gap-2">
-              <img src="icons/imagem.png" alt="Adicionar imagem" width="20" height="20">
+              <img src="/icons/imagem.png" alt="Adicionar imagem" width="20" height="20">
               Adicionar imagem
             </button>
 
@@ -689,53 +622,86 @@
 
           <!-- Banner fixo com botão de edição -->
           <div class="position-relative mb-4">
-            <img src="pictures/banner.jpg" class="w-100 rounded" style="height: 160px; object-fit: cover;" alt="Banner">
+            <img src="/pictures/banner.jpg" class="w-100 rounded" style="height: 160px; object-fit: cover;"
+              alt="Banner">
             <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2"
               onclick="document.getElementById('inputBanner').click()">
-              <img src="icons/foto.png" width="20" height="20" alt="Editar Banner">
+              <img src="/icons/foto.png" width="20" height="20" alt="Editar Banner">
             </button>
             <input type="file" id="inputBanner" accept="image/*" hidden>
           </div>
 
           <!-- Foto de perfil (clicável) -->
-          <div class="text-center mb-4">
-            <label for="inputPerfil" class="position-relative d-inline-block" style="cursor: pointer;">
-              <img src="pictures/perfil.jpg" class="rounded-circle border border-3 border-white shadow" width="100"
-                height="100" style="object-fit: cover;">
-              <div class="position-absolute top-50 start-50 translate-middle">
-                <img src="icons/foto.png" width="24" height="24" alt="Alterar foto">
-              </div>
-            </label>
-            <input type="file" id="inputPerfil" accept="image/*" hidden>
-          </div>
+          <form id="formPerfil">
+            <div class="text-center mb-4">
+              <label for="inputPerfil" class="position-relative d-inline-block" style="cursor: pointer;">
+                <img src="/pictures/perfil.jpg" class="rounded-circle border border-3 border-white shadow" width="100"
+                  height="100" style="object-fit: cover;">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                  <img src="/icons/foto.png" width="24" height="24" alt="Alterar foto">
+                </div>
+              </label>
+              <input type="file" id="inputPerfil" name="image" accept="image/*" hidden>
+            </div>
 
-          <!-- Campos de edição -->
-          <form>
+            <!-- Campos de edição -->
+
             <div class="mb-3">
-              <input type="text" class="form-control text-dark" placeholder="Nome">
+              <input type="text" name="nome" class="form-control text-dark" placeholder="Nome">
             </div>
             <div class="mb-3">
-              <textarea class="form-control text-dark" rows="2" placeholder="Descrição"></textarea>
+              <textarea class="form-control text-dark" name="bio" rows="2" placeholder="Descrição"></textarea>
+            </div>
+            <div class="mb-3">
+              <input type="text" name="cargo" class="form-control text-dark" placeholder="Cargo">
             </div>
             <div class="mb-3 row">
               <div class="col">
-                <input type="text" class="form-control text-dark" placeholder="Cidade">
+                <input type="text" class="form-control text-dark" name="cidade" placeholder="Cidade">
               </div>
               <div class="col">
-                <input type="text" class="form-control text-dark" placeholder="Estado">
+                <input type="text" class="form-control text-dark" name="estado" placeholder="Estado">
               </div>
             </div>
-            <div class="mb-3">
-              <input type="text" class="form-control text-dark" placeholder="Adicionar habilidades/interesses">
+
+            <div class="modal-footer bg-light">
+              <button type="submit" id="formPerfil" class="btn btn-primary">Salvar alterações</button>
             </div>
           </form>
-        </div>
-        <div class="modal-footer bg-light">
-          <button type="button" class="btn btn-primary">Salvar alterações</button>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById("formPerfil").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const token = localStorage.getItem("authToken");
+
+      try {
+        const response = await fetch("https://ufconnect.onrender.com/user/update", {
+          method: "PUT",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${token}`
+
+          }
+        });
+
+        const data = await response.json(); // <- parsear JSON, se seu backend retornar JSON
+        console.log(data);
+
+        // Redirecionar se quiser
+        // window.location.href = "/perfil";
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao atualizar perfil.");
+      }
+    });
+  </script>
 
   <!-- Bootstrap Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -819,3 +785,20 @@
 </body>
 
 </html>
+
+<script>
+
+async function deletarPost(postId){
+  try{
+    token =  localStorage.getItem("authToken");
+    const response = await fetch(`https://ufconnect.onrender.com/post/delete/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })} catch(error){
+      console.log(error)
+    }
+};
+
+</script> 
