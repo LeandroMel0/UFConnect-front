@@ -221,7 +221,7 @@
       </button>
 
       <!-- Botão: Oportunidades -->
-      <button onclick="location.href='feedOpportunities.html'"
+      <button onclick="location.href='/feedOpportunities'"
         class="btn text-white text-decoration-none d-flex align-items-center gap-2">
         <img src="icons/oportunidadesB.png" alt="Oportunidades" width="20" height="20">
         Oportunidades
@@ -327,7 +327,6 @@
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body bg-dark rounded-bottom">
-                  <a href="#" class="text-white text-decoration-none d-block mb-2"> Editar Perfil</a>
                   <a href="/logout" class="text-white text-decoration-none d-block"> Sair</a>
                 </div>
               </div>
@@ -411,25 +410,25 @@
         </h5>
         <ul class="list-unstyled">
           <li class="mb-2">
-            <a href="perfil-ermana.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
+            <a href="" class="text-white text-decoration-none d-flex align-items-center gap-2">
               <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
               Professora Ermana Lopes
             </a>
           </li>
           <li class="mb-2">
-            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
+            <a href="" class="text-white text-decoration-none d-flex align-items-center gap-2">
               <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
               Prof. Elmano
             </a>
           </li>
           <li class="mb-2">
-            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
+            <a href="" class="text-white text-decoration-none d-flex align-items-center gap-2">
               <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
               Prof. Jarbas
             </a>
           </li>
           <li class="mb-2">
-            <a href="perfil-elmano.html" class="text-white text-decoration-none d-flex align-items-center gap-2">
+            <a href="" class="text-white text-decoration-none d-flex align-items-center gap-2">
               <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
               Professora Nilena
             </a>
@@ -478,16 +477,15 @@
 
 
             <!-- Acordeão de opções de publicação -->
-            <div class="mb-4">
+            <div class="mb-4 d-none">
               <label for="destinoPublicacao" class="form-label">Onde publicar?</label>
               <select class="form-select" name="tipo" id="destinoPublicacao" required>
                 <option value="1" selected>Oportunidades</option>
-                <option value="0">Feed</option>
               </select>
             </div>
 
             <!-- Botões -->
-            <div class="d-flex gap-4">
+            <div class="d-flex gap-4" style="margin-top: 2%;">
               <button id="btnPublicar" class="btn btn-custom w-100">Publicar</button>
             </div>
           </form>

@@ -196,6 +196,18 @@
     .object-fit-cover {
       object-fit: cover;
     }
+
+    .link-feed-nome {
+      color: white;
+      text-decoration: none;
+      font-weight: normal;
+      transition: color 0.3s;
+    }
+
+    .link-feed-nome:hover {
+      color: #b938c2;
+      /* azul Bootstrap, ou qualquer cor */
+    }
   </style>
 
 </head>
@@ -328,7 +340,6 @@
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body bg-dark rounded-bottom">
-                  <a href="#" class="text-white text-decoration-none d-block mb-2"> Editar Perfil</a>
                   <a href="/logout" class="text-white text-decoration-none d-block"> Sair</a>
                 </div>
               </div>
@@ -362,8 +373,9 @@
 
                   <img src="<%=post.avatar_url || 'pictures/perfil.jpg'%>" alt="Foto de perfil"
                     class="rounded-circle me-3" width="50" height="50">
-                  <strong>
-                    <%= post.nome %>
+                  <strong><a href="/perfil/<%=post.usuario_id%>" class="link-feed-nome">
+                      <%= post.nome %>
+                    </a>
                   </strong>
                   <p class="mb-1">
                     <%= post.cargo %>
@@ -456,7 +468,8 @@
           <!-- Foto + Caixa de texto -->
           <form id="postFrom">
             <div class="d-flex align-items-start mb-4 mt-2">
-              <img src="<%=user_info.avatar_url || 'pictures/perfil.jpg'%>" alt="Foto de perfil" class="rounded-circle me-3" width="55" height="55">
+              <img src="<%=user_info.avatar_url || 'pictures/perfil.jpg'%>" alt="Foto de perfil"
+                class="rounded-circle me-3" width="55" height="55">
               <textarea class="form-control" name="texto" placeholder="Compartilhe algo com seus colegas da UFC!"
                 rows="6" style="resize: none; border-radius: 10px;"></textarea>
             </div>
@@ -478,16 +491,15 @@
 
 
             <!-- Acordeão de opções de publicação -->
-            <div class="mb-4">
+            <div class="mb-4 d-none">
               <label for="destinoPublicacao" class="form-label">Onde publicar?</label>
               <select class="form-select" name="tipo" id="destinoPublicacao" required>
-                <option value="1" selected>Oportunidades</option>
                 <option value="0">Feed</option>
               </select>
             </div>
 
             <!-- Botões -->
-            <div class="d-flex gap-4">
+            <div class="d-flex gap-4" style="margin-top: 2%;">
               <button id="btnPublicar" class="btn btn-custom w-100">Publicar</button>
             </div>
           </form>
