@@ -24,7 +24,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: process.env.MAXAGE// 1h
+      maxAge: parseInt(process.env.MAXAGE) || 360000 // 1h
     }
   })
 );
