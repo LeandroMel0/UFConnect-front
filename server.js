@@ -2,11 +2,10 @@ const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-
 const axios = require("axios");
-
+require('dotenv').config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //EJS 
 // Configura o EJS como engine de visualização
@@ -21,11 +20,11 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "segredo-super-seguro",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 60 * 60 * 1000 // 1h
+      maxAge: process.env.MAXAGE// 1h
     }
   })
 );
