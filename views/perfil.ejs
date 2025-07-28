@@ -681,9 +681,9 @@
 
         const data = await response.json(); // <- parsear JSON, se seu backend retornar JSON
         console.log(data);
-
         
-        window.location.href = "/perfil/";
+        
+        location.reload();
       } catch (error) {
         console.error(error);
         alert("Erro ao atualizar perfil.");
