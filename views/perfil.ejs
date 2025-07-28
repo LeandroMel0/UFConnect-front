@@ -618,18 +618,6 @@
           <h5 class="modal-title" id="modalEditarPerfilLabel">Editar Perfil</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
-        <div class="modal-body bg-light text-dark">
-
-          <!-- Banner fixo com botão de edição -->
-          <div class="position-relative mb-4">
-            <img src="/pictures/banner.jpg" class="w-100 rounded" style="height: 160px; object-fit: cover;"
-              alt="Banner">
-            <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-2"
-              onclick="document.getElementById('inputBanner').click()">
-              <img src="/icons/foto.png" width="20" height="20" alt="Editar Banner">
-            </button>
-            <input type="file" id="inputBanner" accept="image/*" hidden>
-          </div>
 
           <!-- Foto de perfil (clicável) -->
           <form id="formPerfil">
@@ -694,8 +682,8 @@
         const data = await response.json(); // <- parsear JSON, se seu backend retornar JSON
         console.log(data);
 
-        // Redirecionar se quiser
-        // window.location.href = "/perfil";
+        
+        window.location.href = "/perfil";
       } catch (error) {
         console.error(error);
         alert("Erro ao atualizar perfil.");
