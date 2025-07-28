@@ -171,8 +171,10 @@ app.get("/feedOpportunities", (req, res) => {
 //tela do perfil 
 app.get("/perfil/:id",async (req, res) => {
 
-  const user_get = req.params.id;
-
+  let user_get = req.params.id;
+  if(!user_get){
+   user_get = req.session.usuario.id. 
+  } 
   if (req.session.usuario) {
     const responde = await axios.get(`https://ufconnect.onrender.com/user/get/${user_get}`)
     const responde_2 = await axios.get(`https://ufconnect.onrender.com/post/user/${user_get}`)
