@@ -173,7 +173,7 @@ app.get("/perfil/:id",async (req, res) => {
 
   let user_get = req.params.id;
   if(!user_get){
-   user_get = req.session.usuario.id. 
+   user_get = req.session.usuario.id;
   } 
   if (req.session.usuario) {
     const responde = await axios.get(`https://ufconnect.onrender.com/user/get/${user_get}`)
