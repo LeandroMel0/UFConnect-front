@@ -242,7 +242,8 @@
       </button>
 
       <!-- Botão: Perfil -->
-      <button id="btnPerfil" class="btn text-white text-decoration-none d-flex align-items-center gap-2">
+      <button id="btnPerfil" class="btn text-white text-decoration-none d-flex align-items-center gap-2"
+        onclick="location.href='/perfil/<%= user_id %>'">
         <img src="/icons/perfil.png" alt="Perfil" width="20" height="20">
         Perfil
       </button>
@@ -353,64 +354,13 @@
                 </p>
 
                 <div class="d-flex flex-wrap gap-2">
-                  <!-- TAgs-->
-                  <!-- <span
-                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Engenharia
-                    de Software</span>
-                  <span
-                    class="badge bg-white text-purple border border-purple fw-medium px-3 py-2 rounded-pill">Inteligência
-                    Artificial</span>-->
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Caixa de postagens com rolagem -->
-
-        <!-- 
-            <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
-              <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                &#x22EE;  vertical ellipsis 
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Salvar publicação</a></li>
-                <li><a class="dropdown-item" href="#">Deletar postagem</a></li>
-              </ul>
-            </div>
-
-            <div class="mb-2">
-              <img src="/pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="50" height="50">
-              <strong>Professor Evilásio</strong>
-              <p class="mb-1">Professor de Engenharia de Computação</p>
-            </div>
-            <p>
-              Feliz em anunciar que todos meus alunos de Engenharia de Software do semestre de 2025.1
-              fizeram ótimos trabalhos e tiraram 10! O melhor foi o UFConnect!
-            </p>
-            <img src="null" class="img-fluid rounded mb-2" alt="">
-            <div class="d-flex justify-content-around text-white-50">
-              <div class="d-flex gap-5">
-                <button class="btn-invisible like-button" type="button">
-                  <img src="/icons/curtida.png" alt="Curtir" width="20" height="20">
-                  <span class="like-count">50</span>
-                </button>
-                <button class="btn-invisible">
-                  <img src="/icons/comentario.png" alt="Comentários" width="20" height="20"> 11 comentários
-                </button>
-
-                <button class="btn-invisible">
-                  <img src="/icons/compartilhar.png" alt="Compartilhar" width="20" height="20"> Compartilhar
-                </button>
-              </div>
-            </div>
-          </div> -->
-
-
-
-
-        <!-- Postagem 2 -->
+        <!-- POSTS -->
         <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
 
           <!-- Postagem 1 támbem post coringa -->
@@ -418,7 +368,7 @@
             <% if (posts.length> 0) { %>
               <% posts.forEach(post=> { %>
                 <!-- Postagem -->
-                <div class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
+                <div id="<%=post.id%>" class="postagem bg-secondary bg-opacity-25 p-3 mb-3 rounded position-relative">
                   <!-- Menu de três pontinhos -->
                   <div class="dropdown position-absolute top-0 end-0 mt-4 me-3">
                     <button class="btn btn-sm btn-secondary bg-opacity-25 border-0 text-white-50" type="button"
@@ -432,7 +382,7 @@
 
                   <div class="mb-2">
 
-                    <img src="<%=post.avatar_url || 'pictures/perfil.jpg'%>" alt="Foto de perfil"
+                    <img src="<%=post.avatar_url || '/pictures/perfil.jpg'%>" alt="Foto de perfil"
                       class="rounded-circle me-3" width="50" height="50">
                     <strong>
                       <%= post.nome %>
@@ -468,43 +418,11 @@
                 <% }) %>
                   <% } %>
 
-                    <div class="spinner-border" role="status"
+                    <div class="spinner-border invisible" role="status"
                       style="position:sticky; top: 50%;left: 50%;width: 3rem; height: 3rem; z-index: 1050;">
                       <span class="visually-hidden">Loading...</span>
                     </div>
           </div>
-
-          <!-- Modal de Comentários -->
-          <div class="modal fade" id="comentariosModal" tabindex="-1" aria-labelledby="comentariosModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="comentariosModalLabel">Comentários</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                  <!-- Lista de comentários -->
-                  <ul id="listaComentarios" class="list-group mb-3" style="max-height: 300px; overflow-y: auto;">
-                    <!-- Comentários serão inseridos aqui -->
-                  </ul>
-
-                  <!-- Formulário para novo comentário -->
-                  <form id="formComentario">
-                    <div class="mb-3">
-                      <label for="novoComentario" class="form-label">Adicionar comentário</label>
-                      <textarea class="form-control" id="novoComentario" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Comentar</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Adicione mais postagens conforme desejar -->
-
         </div>
       </main>
 
@@ -546,122 +464,62 @@
     </div>
   </div>
 
-  <!-- Modal de Publicação -->
-  <div class="modal fade" id="modalPublicar" tabindex="-1" aria-labelledby="modalPublicarLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content bg-dark text-white rounded-4 position-relative"
-        style="min-height: 350px; padding: 1.5rem;">
-
-        <!-- Botão X fixado no topo -->
-        <button type="button" class="btn-close btn-close-white position-absolute" style="top: 15px; right: 15px;"
-          data-bs-dismiss="modal" aria-label="Fechar"></button>
-
-        <!-- Corpo do modal -->
-        <div class="modal-body pt-0">
-          <!-- Foto + Caixa de texto -->
-          <div class="d-flex align-items-start mb-4 mt-2">
-            <img src="/pictures/perfil.jpg" alt="Foto de perfil" class="rounded-circle me-3" width="55" height="55">
-            <textarea class="form-control" placeholder="Compartilhe algo com seus colegas da UFC!" rows="6"
-              style="resize: none; border-radius: 10px;"></textarea>
-          </div>
-
-          <!-- Linha branca separadora -->
-          <hr style="border-top: 1px solid white; opacity: 1;" class="my-4">
-
-          <!-- Acordeão de opções de publicação -->
-          <div class="accordion mb-4" id="accordionDestinoPublicacao">
-            <div class="accordion-item bg-transparent border-white text-white">
-              <h2 class="accordion-header" id="headingDestino">
-                <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseDestino" aria-expanded="false" aria-controls="collapseDestino">
-                  Onde publicar?
-                </button>
-              </h2>
-              <div id="collapseDestino" class="accordion-collapse collapse" aria-labelledby="headingDestino"
-                data-bs-parent="#accordionDestinoPublicacao">
-                <div class="accordion-body">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="feed" value="feed"
-                      checked>
-                    <label class="form-check-label" for="feed">Feed</label>
-                  </div>
-                  <div class="form-check mt-2">
-                    <input class="form-check-input" type="radio" name="destinoPublicacao" id="oportunidades"
-                      value="oportunidades">
-                    <label class="form-check-label" for="oportunidades">Oportunidades</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botões -->
-          <div class="d-flex gap-4">
-            <button class="btn btn-white-custom w-50 d-flex align-items-center justify-content-center gap-2">
-              <img src="/icons/imagem.png" alt="Adicionar imagem" width="20" height="20">
-              Adicionar imagem
-            </button>
-
-            <button id="btnPublicar" class="btn btn-custom w-50">Publicar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Modal de Edição de Perfil -->
   <div class="modal fade" id="modalEditarPerfil" tabindex="-1" aria-labelledby="modalEditarPerfilLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-header bg-light text-dark">
+      <div class="modal-content bg-dark text-white rounded-4 shadow">
+        <div class="modal-header border-0">
           <h5 class="modal-title" id="modalEditarPerfilLabel">Editar Perfil</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
 
-          <!-- Foto de perfil (clicável) -->
-          <form id="formPerfil">
-            <div class="text-center mb-4">
-              <label for="inputPerfil" class="position-relative d-inline-block" style="cursor: pointer;">
-                <img src="/pictures/perfil.jpg" class="rounded-circle border border-3 border-white shadow" width="100"
-                  height="100" style="object-fit: cover;">
-                <div class="position-absolute top-50 start-50 translate-middle">
-                  <img src="/icons/foto.png" width="24" height="24" alt="Alterar foto">
-                </div>
-              </label>
-              <input type="file" id="inputPerfil" name="image" accept="image/*" hidden>
-            </div>
+        <!-- Foto de perfil (clicável) -->
+        <form id="formPerfil" class="p-4">
+          <div class="text-center mb-4">
+            <label for="inputPerfil" class="position-relative d-inline-block" style="cursor: pointer;">
+              <img id="previewPerfil" src="/pictures/perfil.jpg"
+                class="rounded-circle border border-3 border-white shadow" width="100" height="100"
+                style="object-fit: cover;">
+            </label>
+            <input type="file" id="inputPerfil" name="image" accept="image/*" hidden>
+          </div>
 
-            <!-- Campos de edição -->
+          <!-- Campos de edição -->
+          <div class="mb-3">
+            <input value="<%= user_data.nome %>" type="text" name="nome" class="form-control bg-light text-dark"
+              placeholder="Nome" required>
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control bg-light text-dark" name="bio" rows="2" placeholder="Descrição"
+              required><%= user_data.bio %></textarea>
+          </div>
+          <div class="mb-3">
+            <input type="text" value="<%= user_data.cargo %>" name="cargo" class="form-control bg-light text-dark"
+              placeholder="Cargo" required>
+          </div>
+          <div class="mb-3 row">
+            <div class="col">
+              <input type="text" value="<%= user_data.cidade %>" class="form-control bg-light text-dark" name="cidade"
+                placeholder="Cidade" required>
+            </div>
+            <div class="col">
+              <input type="text" value="<%= user_data.estado %>" class="form-control bg-light text-dark" name="estado"
+                placeholder="Estado" required>
+            </div>
+          </div>
 
-            <div class="mb-3">
-              <input type="text" name="nome" class="form-control text-dark" placeholder="Nome">
-            </div>
-            <div class="mb-3">
-              <textarea class="form-control text-dark" name="bio" rows="2" placeholder="Descrição"></textarea>
-            </div>
-            <div class="mb-3">
-              <input type="text" name="cargo" class="form-control text-dark" placeholder="Cargo">
-            </div>
-            <div class="mb-3 row">
-              <div class="col">
-                <input type="text" class="form-control text-dark" name="cidade" placeholder="Cidade">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control text-dark" name="estado" placeholder="Estado">
-              </div>
-            </div>
-
-            <div class="modal-footer bg-light">
-              <button type="submit" id="formPerfil" class="btn btn-primary">Salvar alterações</button>
-            </div>
-          </form>
-        </div>
+          <div class="modal-footer border-0">
+            <button type="submit" class="btn btn-custom">Salvar alterações</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 
+
   <script>
+    // Atualiza o perfil do usuário
     document.getElementById("formPerfil").addEventListener("submit", async function (e) {
       e.preventDefault();
 
@@ -670,7 +528,7 @@
       const token = localStorage.getItem("authToken");
 
       try {
-        const response = await fetch("https://ufconnect.onrender.com/user/update", {
+        const response = await fetch("<%=API%>/user/update", {
           method: "PUT",
           body: formData,
           headers: {
@@ -679,10 +537,10 @@
           }
         });
 
-        const data = await response.json(); // <- parsear JSON, se seu backend retornar JSON
+        const data = await response.json();
         console.log(data);
-        
-        
+
+
         location.reload();
       } catch (error) {
         console.error(error);
@@ -694,58 +552,6 @@
   <!-- Bootstrap Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // Lista inicial de comentários (exemplo)
-    const comentarios = [
-      { autor: "Maria", texto: "Parabéns pelo ótimo trabalho!" },
-      { autor: "João", texto: "O UFConnect é sensacional mesmo." },
-      { autor: "Ana", texto: "Muito orgulho dos alunos!" }
-    ];
-
-    const listaComentarios = document.getElementById('listaComentarios');
-    const formComentario = document.getElementById('formComentario');
-    const novoComentarioInput = document.getElementById('novoComentario');
-
-    // Função para atualizar a lista no modal
-    function atualizarListaComentarios() {
-      listaComentarios.innerHTML = ''; // limpa a lista
-      comentarios.forEach((c) => {
-        const li = document.createElement('li');
-        li.classList.add('list-group-item');
-        li.innerHTML = `<strong>${c.autor}:</strong> ${c.texto}`;
-        listaComentarios.appendChild(li);
-      });
-    }
-
-    // Quando o modal abrir, atualizar a lista
-    const comentariosModal = document.getElementById('comentariosModal');
-    comentariosModal.addEventListener('show.bs.modal', () => {
-      atualizarListaComentarios();
-    });
-
-    // Ao enviar o formulário de comentário, adiciona novo comentário
-    formComentario.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const texto = novoComentarioInput.value.trim();
-      if (texto) {
-        comentarios.push({ autor: "Você", texto }); // autor fixo por exemplo
-        novoComentarioInput.value = '';
-        atualizarListaComentarios();
-      }
-    });
-  </script>
-
-  <script>
-    document.querySelectorAll('.like-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const post = button.closest('.postagem');
-        const counter = post.querySelector('.like-count');
-        let currentLikes = parseInt(counter.textContent);
-        counter.textContent = currentLikes + 1;
-      });
-    });
-  </script>
 
   <script>
     // Espera o DOM carregar
@@ -775,18 +581,41 @@
 </html>
 
 <script>
+  //Delatar um post
+  async function deletarPost(postId) {
+    try {
+      token = localStorage.getItem("authToken");
+      const response = await fetch(`<%=API%>/post/delete/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
 
-async function deletarPost(postId){
-  try{
-    token =  localStorage.getItem("authToken");
-    const response = await fetch(`https://ufconnect.onrender.com/post/delete/${postId}`, {
-      method: 'DELETE',
-      headers: {
-        "Authorization": `Bearer ${token}`
+      if (response.status == 200) {
+        document.getElementById(postId).style.display = "none";
       }
-    })} catch(error){
+
+    } catch (error) {
       console.log(error)
     }
-};
+  };
 
-</script> 
+</script>
+
+<!-- Mostra a Imagem quando Edita o Perfil-->
+<script>
+  const inputImagem = document.getElementById('inputPerfil');
+  const preview = document.getElementById('previewPerfil');
+
+  inputImagem.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const leitor = new FileReader();
+      leitor.onload = function (e) {
+        preview.src = e.target.result;
+      }
+      leitor.readAsDataURL(file);
+    }
+  });
+</script>

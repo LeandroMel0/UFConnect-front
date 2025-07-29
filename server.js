@@ -6,7 +6,7 @@ const axios = require("axios");
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const API = process.env.API || `localhost:${PORT}`
 //EJS 
 // Configura o EJS como engine de visualização
 app.set('view engine', 'ejs');
@@ -52,7 +52,7 @@ app.post("/login", async (req, res) => {
 
 
   try {
-    const response = await axios.post('https://ufconnect.onrender.com/user/login', {
+    const response = await axios.post(`${API}/user/login`, {
       email,
       password
     });
@@ -93,7 +93,7 @@ app.post("/register", async (req, res) => {
   if (password == confirmPassword) {
     // Aqui você pode salvar em banco de dados
     try {
-      const response = await axios.post('https://ufconnect.onrender.com/user/create', {
+      const response = await axios.post(`${API}/user/create`, {
         email,
         password
       });
@@ -130,11 +130,11 @@ app.get("/feedOpportunities", async (req, res)=>{
 
   const user_id = req.session.usuario.id;
 
-  const user_info = await axios.get(`https://ufconnect.onrender.com/user/get/${user_id}`)
-  const posts = await axios.get(`https://ufconnect.onrender.com/post/list?tipo=1`)
+  const user_info = await axios.get(`${API}/user/get/${user_id}`)
+  const posts = await axios.get(`${API}/post/list?tipo=1`)
 
 
-  res.render("feedOpportunities", { "user_info": user_info.data, "posts": posts.data,"token":req.session.usuario.tonken});
+  res.render("feedOpportunities", { "user_info": user_info.data, "posts": posts.data,"token":req.session.usuario.tonken,API});
 
 })
 
@@ -146,26 +146,17 @@ app.get("/feed", async (req, res) => {
 
   const user_id = req.session.usuario.id;
 
-  const user_info = await axios.get(`https://ufconnect.onrender.com/user/get/${user_id}`)
-  const posts = await axios.get(`https://ufconnect.onrender.com/post/list?tipo=0`)
+  const user_info = await axios.get(`${API}/user/get/${user_id}`)
+  const posts = await axios.get(`${API}/post/list?tipo=0`)
 
 
-  res.render("feed", { "user_info": user_info.data, "posts": posts.data,"token":req.session.usuario.tonken});
+  res.render("feed", { "user_info": user_info.data, "posts": posts.data,"token":req.session.usuario.tonken,API});
 
 });
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
-});
-
-// tela de oportunidades
-app.get("/feedOpportunities", (req, res) => {
-  if (req.session.usuario) {
-    res.render("feedOpportunities");
-  } else {
-    res.redirect("/");
-  }
 });
 
 //tela do perfil 
@@ -176,10 +167,10 @@ app.get("/perfil/:id",async (req, res) => {
    user_get = req.session.usuario.id;
   } 
   if (req.session.usuario) {
-    const responde = await axios.get(`https://ufconnect.onrender.com/user/get/${user_get}`)
-    const responde_2 = await axios.get(`https://ufconnect.onrender.com/post/user/${user_get}`)
+    const responde = await axios.get(`${API}/user/get/${user_get}`)
+    const responde_2 = await axios.get(`${API}/post/user/${user_get}`)
     if(responde.data){
-      return res.render('perfil',{'user_data':responde.data, "posts":responde_2.data})
+      return res.render('perfil',{'user_data':responde.data, "posts":responde_2.data,"user_id":req.session.usuario.id,API})
     } 
   } else {
     res.redirect("/");
@@ -189,11 +180,6 @@ app.get("/perfil/:id",async (req, res) => {
 
 
 });
-
-app.get('/perfiltest', (req, res) =>{
-
-  res.render('feed1')
-})
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);

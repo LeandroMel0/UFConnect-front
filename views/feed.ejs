@@ -407,7 +407,7 @@
 
               <% }) %>
                 <% } %>
-                  <div class="spinner-border" role="status"
+                  <div class="spinner-border invisible" role="status"
                     style="position:sticky; top: 50%;left: 50%;width: 3rem; height: 3rem; z-index: 1050;">
                     <span class="visually-hidden">Loading...</span>
                   </div>
@@ -425,7 +425,7 @@
           <li class="mb-2">
             <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2">
               <img src="icons/perfil.png" alt="Perfil" width="20" height="20">
-              Professora Ermana Lopes
+              Professor Evilásio
             </a>
           </li>
           <li class="mb-2">
@@ -598,7 +598,7 @@
     const token = localStorage.getItem("authToken");
 
     try {
-      const response = await fetch("https://ufconnect.onrender.com/post/create", {
+      const response = await fetch("<%=API%>/post/create", {
         method: "POST",
         body: formData,
         headers: {
